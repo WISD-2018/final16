@@ -3,7 +3,10 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/easy-sidebar.css" type="text/css">
     <meta charset="UTF-8">
-    <title>test</title>
+    <title>
+        {{$title}}
+    </title>
+
 </head>
 <body>
 

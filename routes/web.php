@@ -11,19 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('test.index');
-});
 
-Route::get('/layout', function () {
-    return view('layout.index');
+
+Route::get('/', function () {
+    return view('layout.default');
 });
 
 Route::get('/member', function () {
     return view('member');
 });
 
-Route::get('bar',function(){
-    return view('test.bar');
+Route::get('/buggy',function (){
+    return view('buggy',['title'=>'購物車']);
 });
 
+Route::get('v2',function (){
+    return view('layout2.default');
+});
+
+Route::get('test',function (){
+   return view('test');
+});

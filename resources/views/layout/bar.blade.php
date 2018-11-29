@@ -19,10 +19,14 @@
 </nav>
 <div class="container">
     <!--easy-sidebar-toggle-right -->
-    <button class="btn btn-danger easy-sidebar-toggle">Toggle Sidebar</button> 給個名子
-
+    <button class="easy-sidebar-toggle">
+        <span class="navbar-toggler-icon"></span>
+    </button><span style="font-size:30px;">無人商店資訊系統</span>
+    <span style="font-size:18px;">{{$title}}</span>
 </div>
 
-<h5 class="page-header"></h5>
+<h2 class="page-header"></h2>
+
+
 
 
