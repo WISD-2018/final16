@@ -21,14 +21,20 @@ Route::get('/member', function () {
     return view('member');
 });
 
-Route::get('/buggy',function (){
-    return view('buggy',['title'=>'購物車']);
-});
 
 Route::get('v2',function (){
-    return view('layout2.default');
+    return view('layout2.default',['title'=>'v2']);
 });
 
 Route::get('test',function (){
    return view('test');
+});
+
+//
+Route::get('/buggy',function (){
+    return view('buggy',['title'=>'購物車']);
+});
+
+Route::get('/feedback',function (){
+   return view('feedback',['title'=>'問題回報']);
 });

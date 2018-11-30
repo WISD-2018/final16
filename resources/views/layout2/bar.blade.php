@@ -1,6 +1,6 @@
 <!-- .navbar-expand-{sm|md|lg|xl}決定在哪個斷點以上就出現漢堡式選單 -->
 <!-- navbar-dark 文字顏色 .bg-dark 背景顏色 -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 
 
     <!-- .navbar-toggler 漢堡式選單按鈕 -->
