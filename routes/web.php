@@ -38,3 +38,5 @@ Route::get('/buggy',function (){
 Route::get('/feedback',function (){
    return view('feedback',['title'=>'問題回報']);
 });
+
+
