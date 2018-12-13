@@ -2,7 +2,6 @@
 <!-- navbar-dark 文字顏色 .bg-dark 背景顏色 -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 
-
     <!-- .navbar-toggler 漢堡式選單按鈕 -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <!-- .navbar-toggler-icon 漢堡式選單Icon -->
@@ -12,7 +11,7 @@
     <!-- .navbar-brand 左上LOGO位置 -->
     <a class="navbar-brand" href="/">
         <img src="{{ URL::asset('images/shopping-cart.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-        <span class="h3 mx-1">Self-Service Store IS</span>
+        <span class="h3 mx-1">Self-Service Store</span>
     </a>
 
     <!-- .collapse.navbar-collapse 用於外層中斷點群組和隱藏導覽列內容 -->

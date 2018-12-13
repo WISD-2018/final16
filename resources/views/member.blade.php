@@ -1,13 +1,13 @@
 @extends('layout2.default')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-offset-6">
                 <h1 class="page-header" style="text-align: center">會員資訊</h1>
-                <table class="table table-hover table-striped">
+                <table class="table table-hover table-striped table-responsive">
                     <tbody>
                     <tr>
                         <td>
@@ -55,20 +55,26 @@
                         <td>
                         </td>
                     </tr>
-                    <tr class="table">
-                        <td>
-                            <button class="btn btn-primary">回上頁</button>
-                        </td>
-                        <td></td>
-                        <td>
-                            <button class="btn btn-primary">修改會員資料</button>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
             </div>
         </div>
     </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col-8">
+                <button class="btn btn-primary">回上頁</button>
+                <button class="btn btn-primary">修改資料</button>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+    </div>
+
+
     @endsection

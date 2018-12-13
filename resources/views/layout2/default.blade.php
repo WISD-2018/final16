@@ -5,16 +5,22 @@
     <title>
         {{$title}}
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </header>
 
 
 <body>
+
+
 @include('layout2.bar')
 
 @section('content')
     這是內容
     這是內容
-    @show
+@show
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
