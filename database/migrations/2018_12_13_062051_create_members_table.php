@@ -18,10 +18,11 @@ class CreateMembersTable extends Migration
             $table->string('account');
             $table->string('password');
             $table->string('name');
+            $table->integer('points');
             $table->string('phone');
-            $table->string('e-mail');
+            $table->string('email');
             $table->date('birthday');
-            $table->string('payment');
+            $table->string('img');
             $table->timestamps();
         });
     }

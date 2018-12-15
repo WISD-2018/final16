@@ -10,51 +10,79 @@
                 <table class="table table-hover table-striped table-responsive">
                     <tbody>
                     <tr>
-                        <td>
+                        <th>
                             會員編號
-                        </td>
+                        </th>
                         <td>
-                            C8555
+                            {{ $member->id }}
                         </td>
-                        <td rowspan="3"><img src="{{ URL::asset('images/photo.jpg') }}"></td>
+                        <td rowspan="3"><img src="{{ URL::asset($member->img) }}"></td>
                     </tr>
                     <tr class="table-active">
+                        <th>
+                            會員姓名
+                        </th>
                         <td>
-                            會員生日
+                            {{ $member->name }}
                         </td>
+                    </tr>
+                    <tr class="table-condensed">
+                        <th>
+                            會員生日
+                        </th>
                         <td>
-                            1968/3/5
+                            {{ $member->birthday }}
+                        </td>
+                    </tr>
+
+                    <tr class="table-warning">
+                        <th>
+                            紅利點數
+                        </th>
+                        <td colspan="2">
+                            {{ $member->points}}點
                         </td>
                     </tr>
                     <tr class="table-success">
-                        <td>
-                            紅利點數
-                        </td>
-                        <td>
-                            66點
+                        <th>
+                            會員電話
+                        </th>
+                        <td colspan="2">
+                            {{ $member->phone}}
                         </td>
                     </tr>
-                    <tr class="table-warning">
-                        <td>
-                            常用信用卡
+                    <tr class="table-success">
+                        <th>
+                            會員信箱
+                        </th>
+                        <td colspan="2">
+                            {{ $member->email}}
                         </td>
-                        <td>
-                            Master Card
-                        </td>
-                        <td>
-                        </td>
-
                     </tr>
                     <tr class="table-danger">
-                        <td>
-                            行動支付
+                        <th>
+                            付款方式
+                        </th>
+                        <td colspan="2">
+                            @foreach($payments as $payment)
+                                <a href="" data-toggle="tooltip" title="{{ substr($payment->key,0,4) }}-****-****-****">{{ $payment->payments }}</a><br>
+                            @endforeach
                         </td>
-                        <td>
-                            Google Pay
+
+
+                    </tr>
+
+                    <tr class="table-info">
+                        <td colspan="2">
+                            <button class="btn btn-primary" onclick="history.back()">回到上頁</button>
+
                         </td>
-                        <td>
+
+                        <td colspan="2">
+                            <button class="btn btn-primary">修改資料</button>
                         </td>
                     </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -63,18 +91,31 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-2">
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        2017-08-01
+                    </button>
+                </h5>
             </div>
-            <div class="col-8">
-                <button class="btn btn-primary">回上頁</button>
-                <button class="btn btn-primary">修改資料</button>
-            </div>
-            <div class="col-2">
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    內容
+                </div>
             </div>
         </div>
-    </div>
+
 
 
     @endsection
+
+@section('script')
+    <script>
+        $(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+@endsection

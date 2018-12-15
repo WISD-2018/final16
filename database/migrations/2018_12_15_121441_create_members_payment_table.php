@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuggiesInfoTable extends Migration
+class CreateMembersPaymentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateBuggiesInfoTable extends Migration
      */
     public function up()
     {
-        Schema::create('buggies_info', function (Blueprint $table) {
-            $table->string('id');
-            $table->string('product_id');
-            $table->float('discount');
-            $table->integer('price');
-            $table->integer('amount');
+        Schema::create('members_payment', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('member_id');
+            $table->string('payments');
+            $table->string('key');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateBuggiesInfoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buggies_info');
+        Schema::dropIfExists('members_payment');
     }
 }

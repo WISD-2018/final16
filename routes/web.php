@@ -36,9 +36,7 @@ Route::get('/emergency',function (){
    return view('emergency',['title'=>'緊急回報']);
 });
 
-Route::get('/member', function () {
-    return view('member',['title'=>'會員資訊']);
-});
+Route::get('/member', 'MemberController@index');
 
 
 Route::get('/test','BuggyController@index');

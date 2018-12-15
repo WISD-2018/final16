@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Member extends Model
+class Payment extends Model
 {
     //
-
-    protected $table='members';
+    protected $table='members_payment';
 }

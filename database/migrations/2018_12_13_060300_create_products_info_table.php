@@ -19,6 +19,7 @@ class CreateProductsInfoTable extends Migration
             $table->float('discount');
             $table->integer('amount');
             $table->integer('price');
+            $table->string('img');
             $table->timestamps();
         });
     }
