@@ -3,7 +3,6 @@
 @section('content')
 
 
-
     <style>
         img{border: none}
         body{background-color: none;max-width:100% ;
@@ -33,25 +32,25 @@
             font-family: cwTeXYen,Arial,FreeSans,Arimo,"微軟正黑體","Microsoft JhengHei","Droid Sans",Helvetica,sans-serif;
             color: #777777;
         }
-         input[type="text"]{
+        input[type="text"]{
             border: 0 none;
-             background-color: transparent;
+            background-color: transparent;
             width: 50px;
-             font-size: 18px;
-             color: #777777;
-             font-family: "微軟正黑體";
-             text-align: center;
+            font-size: 18px;
+            color: #777777;
+            font-family: "微軟正黑體";
+            text-align: center;
         }
     </style>
-        <table class="table table-hover">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col"> <h1 style="text-align: center" class="page-header"><b>購物車清單</b></h1></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
+    <table class="table table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col"> <h1 style="text-align: center" class="page-header"><b>購物車清單</b></h1></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
                 <div class="container">
                     <div class="row">
                         <div class="col-4">
@@ -64,31 +63,25 @@
                             <table class="table-borderless">
                                 <tr align="left" valign="center">
                                     <td>
-                                            <p style="color:#666;font-size:18pt;text-decoration:none;border: 0px" >
-                                                aaaaaaaaaaaaa</p>
+                                        <p style="color:#666;font-size:18pt;text-decoration:none;border: 0px" >
+                                            aaaaaaaaaaaaa</p>
                                         <input style="font-weight:bold;" type="text" disabled="disabled";  value="單價"/>
                                         <input style="font-weight:bold;" type="text" disabled="disabled";  value="數量"/>
                                         <input style="font-weight:bold;" type="text" disabled="disabled";  value="小計"/><br>
-                                    <input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>
-                                    <input style="color: #1b4b72" type="text" disabled="disabled";  value="1"/>
-                                    <input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>
+                                        <input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>
+                                        <input style="color: #1b4b72" type="text" disabled="disabled";  value="1"/>
+                                        <input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
-                </td>
-            </tr>
+            </td>
+        </tr>
 
-            </tbody>
-        </table>
-
-
-
-
-
-
+        </tbody>
+    </table>
 
 
     <div class="container-sm">
@@ -108,24 +101,4 @@
 
 
 @endsection()
-
-
-
-        {{--<tr>--}}
-            {{--<td width="40%">--}}
-                {{--<a href="https://www.obdesign.com.tw/product.aspx?seriesID=DA6205-"--}}
-                   {{--style="color:#666;text-decoration:none;" target="_blank">--}}
-                    {{--<img border="0" src="https://image.obdesign.com.tw/catalog/170801xxx/DA6205-L.jpg" style="width: 100%">--}}
-                {{--</a>--}}
-            {{--</td>--}}
-            {{--<td width="30%">--}}
-                {{--不易皺後蝴蝶結吊帶洋裝--}}
-            {{--</td>--}}
-
-            {{--<td width="10%" align="center"valign="center">100</td>--}}
-            {{--<td width="10%" align="center"valign="center">100</td>--}}
-            {{--<td width="10" align="center"valign="center">100</td>--}}
-
-
-        {{--</tr>--}}
 
