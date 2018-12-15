@@ -32,17 +32,16 @@ Route::get('/feedback',function (){
    return view('feedback',['title'=>'問題回報']);
 });
 
-<<<<<<< HEAD
 
-=======
+
+
 Route::get('/emergency',function (){
    return view('emergency',['title'=>'緊急回報']);
 });
 
 Route::get('/member', 'MemberController@index');
 
-
 Route::get('/test','BuggyController@index');
 
 Route::post('result','BuggyController@result');
->>>>>>> 1819d8864073ff207c1bdb4492939aab30b5b5e6
+
