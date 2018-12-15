@@ -87,7 +87,7 @@
 
                                         <div id="{{ $sale->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                             <div class="card-body">
-                                                {{ $sale->product_id }}
+                                                {{ $sale->products}}
                                             </div>
                                         </div>
                                     </div>

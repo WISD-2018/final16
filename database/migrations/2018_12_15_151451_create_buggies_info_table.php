@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuggiesTable extends Migration
+class CreateBuggiesInfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateBuggiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('buggies', function (Blueprint $table) {
-            $table->string('id');
+        Schema::create('buggies_info', function (Blueprint $table) {
+            $table->string('buggies_id');
             $table->string('product_id');
-            $table->float('discount');
-            $table->integer('price');
             $table->integer('amount');
+            $table->string('img');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateBuggiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buggies');
+        Schema::dropIfExists('buggies_info');
     }
 }
