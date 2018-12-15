@@ -75,6 +75,9 @@
                         </th>
                         <td colspan="2">
                             @foreach($sales as $sale)
+                                @php
+                                    $total=0
+                                @endphp
                                 <div id="accordion">
                                     <div class="card">
                                         <div class="card-header" id="heading{{ $sale->id }}">
@@ -87,7 +90,38 @@
 
                                         <div id="{{ $sale->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                             <div class="card-body">
-                                                {{ $sale->products}}
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">商品名稱</th>
+                                                        <th scope="col">單價</th>
+                                                        <th scope="col">折扣</th>
+                                                        <th scope="col">數量</th>
+                                                        <th scope="col">小計</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                @foreach($sales_info->where('sales_id',$sale->id)->get() as $sale_info)
+                                                    <tr>
+                                                        <th scope="col">{{ $sale_info->products }}</th>
+                                                        <th scope="col">{{ $sale_info->price }}</th>
+                                                        <th scope="col">{{ $sale_info->discount }}</th>
+                                                        <th scope="col">{{ $sale_info->amount }}</th>
+                                                        <th scope="col">{{ $t=$sale_info->price * (1-$sale_info-> discount) * $sale_info->amount}}
+                                                        </th>
+                                                    @php
+                                                        $total=$total+$t
+                                                    @endphp
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                                <table class="table table-hover">
+                                                    <tr>
+                                                        <th scope="col">應付金額</th>
+                                                        <th scope="col">{{ $total }}</th>
+                                                    </tr>
+                                                </table>
+
                                             </div>
                                         </div>
                                     </div>
