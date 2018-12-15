@@ -26,9 +26,7 @@ Route::get('test',function (){
 });
 
 //
-Route::get('/buggy',function (){
-    return view('buggy',['title'=>'購物車']);
-});
+Route::get('/buggy','BuggyController@index');
 
 Route::get('/feedback',function (){
    return view('feedback',['title'=>'問題回報']);
@@ -41,3 +39,8 @@ Route::get('/emergency',function (){
 Route::get('/member', function () {
     return view('member',['title'=>'會員資訊']);
 });
+
+
+Route::get('/test','BuggyController@index');
+
+Route::post('result','BuggyController@result');

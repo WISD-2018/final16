@@ -14,8 +14,8 @@ class CreateBuggiesInfoTable extends Migration
     public function up()
     {
         Schema::create('buggies_info', function (Blueprint $table) {
-            $table->string('buggy_id');
-            $table->string('member_id');
+            $table->string('id');
+            $table->string('product_id');
             $table->float('discount');
             $table->integer('price');
             $table->integer('amount');

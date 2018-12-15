@@ -11,43 +11,73 @@
             <thead>
             <tr>
                 <th scope="col">商品名稱</th>
-                <th scope="col">數量</th>
                 <th scope="col">單價</th>
+                <th scope="col">折扣</th>
+                <th scope="col">數量</th>
                 <th scope="col">小計</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
+            @php
+                $total=0
+            @endphp
+   @foreach($products as $product )
+       @foreach($buggies_info as $buggy_info)
+           <tr>
+               <th scope="col">{{ $product->find($buggy_info->product_id)->name }}</th>
+               <th scope="col">{{ $buggy_info->price }}</th>
+               <th scope="col">{{ $buggy_info->discount }}</th>
+               <th scope="col">{{ $buggy_info->amount }}</th>
+               <th scope="col">{{ $buggy_info->price * (1-$buggy_info->discount) * $buggy_info->amount }}</th>
+               @php
+               $total= $total + $buggy_info->price * (1-$buggy_info->discount) * $buggy_info->amount
+               @endphp
+           </tr>
+       @endforeach
+   @endforeach
         </table>
     </div>
 
     <div class="container">
-        <div class="row align-items-end">
-            <div class="col"><span>應付金額</span></div>
-            <div class="col"><span>$8788</span></div>
-            <div class="col"><span>
-                    <button>
-                        結帳
+        <table class="table table-hover">
+            <tr>
+                <th scope="col">應付金額</th>
+                <th scope="col">{{ $total }}</th>
+            </tr>
+        </table>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+            結帳
+        </button>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">是否要結帳</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
-                </span></div>
+                </div>
+                <div class="modal-body">
+                    總共金額是{{ $total }}元
+                </div>
+                <div class="modal-footer">
+                    <form action="/result" method="POST">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="total" value="{{ $total }}">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">確定</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+
 @endsection()
 
