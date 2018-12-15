@@ -26,7 +26,7 @@
                             {{ $member->name }}
                         </td>
                     </tr>
-                    <tr class="table-condensed">
+                    <tr class="table-success">
                         <th>
                             會員生日
                         </th>
@@ -43,7 +43,7 @@
                             {{ $member->points}}點
                         </td>
                     </tr>
-                    <tr class="table-success">
+                    <tr class="table-danger">
                         <th>
                             會員電話
                         </th>
@@ -51,7 +51,7 @@
                             {{ $member->phone}}
                         </td>
                     </tr>
-                    <tr class="table-success">
+                    <tr class="table-info">
                         <th>
                             會員信箱
                         </th>
@@ -59,7 +59,7 @@
                             {{ $member->email}}
                         </td>
                     </tr>
-                    <tr class="table-danger">
+                    <tr class="table-active">
                         <th>
                             付款方式
                         </th>
@@ -68,11 +68,34 @@
                                 <a href="" data-toggle="tooltip" title="{{ substr($payment->key,0,4) }}-****-****-****">{{ $payment->payments }}</a><br>
                             @endforeach
                         </td>
+                    </tr>
+                    <tr class="table-info">
+                        <th>
+                           消費紀錄
+                        </th>
+                        <td colspan="2">
+                            @foreach($sales as $sale)
+                                <div id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="heading{{ $sale->id }}">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link" data-toggle="collapse" data-target="#{{ $sale->id }}" aria-expanded="true" aria-controls="{{ $sale->id }}">
+                                                    {{ $sale->date }}
+                                                </button>
+                                            </h5>
+                                        </div>
 
-
+                                        <div id="{{ $sale->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                {{ $sale->product_id }}
+                                            </div>
+                                        </div>
+                                    </div>
+                            @endforeach
+                        </td>
                     </tr>
 
-                    <tr class="table-info">
+                    <tr class="table-success">
                         <td colspan="2">
                             <button class="btn btn-primary" onclick="history.back()">回到上頁</button>
 
@@ -91,22 +114,6 @@
         </div>
     </div>
 
-    <div id="accordion">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        2017-08-01
-                    </button>
-                </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                    內容
-                </div>
-            </div>
-        </div>
 
 
 

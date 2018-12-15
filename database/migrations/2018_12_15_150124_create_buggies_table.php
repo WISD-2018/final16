@@ -14,9 +14,11 @@ class CreateBuggiesTable extends Migration
     public function up()
     {
         Schema::create('buggies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('member_id');
-            $table->text('description');
+            $table->string('id');
+            $table->string('product_id');
+            $table->float('discount');
+            $table->integer('price');
+            $table->integer('amount');
             $table->timestamps();
         });
     }
