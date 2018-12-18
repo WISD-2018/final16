@@ -4,10 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Buggies_info extends Model
+class Products_info extends Model
 {
     //
-    protected $table='buggies';
-
-
+    protected $table='products_info';
 }

@@ -42,13 +42,79 @@
             text-align: center;
         }
     </style>
+    <script>
+        function ajaxget()
+        {
+            $.ajax({
+                type: 'get',
+                url: 'http://127.0.0.1:8000/buggy/admin/{{$id}}',
+                dataType: 'Json',
+                success: function (data) {
+                    var product_id=[];
+                    var amount=[];
+                    var price=[];
+                    var img=[];
+                    var str="";
+
+                    for (var i in data){
+                        product_id.push(data[i].product_id);
+                        amount.push(data[i].amount);
+                        price.push(data[i].price);
+                        img.push(data[i].img);
+
+                    }
+                    console.log({{$id}});
+                    console.log(data);
+                    console.log(product_id,amount,price,img);
+
+                    for (i in data){
+                        str +="<tr>"+"<td>" +
+                            "<div class=\"container\">\n" +
+                            "                    <div class=\"row\">\n" +
+                            "                        <div class=\"col-4\">\n" +
+                            "                            <a href="+img[i]+"\n" +
+                            "                               target=\"_blank\">\n" +
+                            "                                <img class=\"img-fluid\" src="+img[i]+">\n" +
+                            "                            </a>\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"col-8\">\n" +
+                            "                            <table class=\"table-borderless\">\n" +
+                            "                                <tr align=\"left\" valign=\"center\">\n" +
+                            "                                    <td>\n" +
+                            "                                        <p style=\"color:#666;font-size:18pt;text-decoration:none;border: 0px\" >\n" +
+                            "                                            aaaaaaaaaaaaa</p>\n" +
+                            "                                        <input style=\"font-weight:bold;\" type=\"text\" disabled=\"disabled\";  value=\"單價\"/>\n" +
+                            "                                        <input style=\"font-weight:bold;\" type=\"text\" disabled=\"disabled\";  value=\"數量\"/>\n" +
+                            "                                        <input style=\"font-weight:bold;\" type=\"text\" disabled=\"disabled\";  value=\"小計\"/><br>\n" +
+                            "                                        <input style=\"color: #1b4b72\" type=\"text\" disabled=\"disabled\";  value="+price[i]+">"+"\n" +
+                            "                                        <input style=\"color: #1b4b72\" type=\"text\" disabled=\"disabled\";  value="+amount[i]+">\n" +
+                            "                                        <input style=\"color: #1b4b72\" type=\"text\" disabled=\"disabled\";  value="+price[i]*amount[i]+">\n" +
+                            "                                    </td>\n" +
+                            "                                </tr>\n" +
+                            "                            </table>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                </div>\n" +
+                            "            </td>"+"</tr>"
+                    }
+
+
+                    document.getElementById("tbody_result").innerHTML= str;
+                }
+            });
+        }
+    </script>
+
+    <body onload="ajaxget()">
+
     <table class="table table-hover">
         <thead class="thead-light">
         <tr>
             <th scope="col"> <h1 style="text-align: center" class="page-header"><b>購物車清單</b></h1></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="tbody_result">
+
         <tr>
             <td>
                 <div class="container">
@@ -80,6 +146,7 @@
             </td>
         </tr>
 
+
         </tbody>
     </table>
 
@@ -97,6 +164,8 @@
            </button>
     </span>
     </div>
+
+    </body>
 
 
 

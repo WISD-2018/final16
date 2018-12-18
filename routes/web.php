@@ -26,7 +26,10 @@ Route::get('test',function (){
 });
 
 //
-Route::get('/buggy','BuggyController@index');
+Route::group(['prefix'=> 'buggy'],function (){
+    Route::get('/admin/{id}','BuggyController@index');
+    Route::get('/{id}','BuggyController@show');
+});
 
 Route::get('/feedback',function (){
    return view('feedback',['title'=>'問題回報']);
