@@ -38,6 +38,12 @@ Route::get('/emergency',function (){
 
 Route::get('/member', 'MemberController@index');
 
+Route::get('/member/modify', 'MemberController@modify');
+
+Route::post('/member/modify', 'MemberController@update');
+
+Route::post('/member/upload/img','MemberController@upload_img');
+
 
 Route::get('/test','BuggyController@index');
 

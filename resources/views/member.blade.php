@@ -1,7 +1,7 @@
 @extends('layout2.default')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
             </div>
@@ -16,7 +16,7 @@
                         <td>
                             {{ $member->id }}
                         </td>
-                        <td rowspan="3"><img src="{{ URL::asset($member->img) }}"></td>
+                        <td rowspan="3"><img class="img-responsive" src="{{ URL::asset($member->img) }}"  width="200"></td>
                     </tr>
                     <tr class="table-active">
                         <th>
@@ -90,7 +90,7 @@
 
                                         <div id="{{ $sale->id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                             <div class="card-body">
-                                                <table class="table table-hover">
+                                                <table class="table table-hover table-responsive">
                                                     <thead>
                                                     <tr>
                                                         <th scope="col">商品名稱</th>
@@ -102,7 +102,7 @@
                                                     </thead>
                                                     <tbody>
                                                 @foreach($sales_info->where('sales_id',$sale->id)->get() as $sale_info)
-                                                    <tr>
+                                                    <tr class="table-active">
                                                         <th scope="col">{{ $sale_info->products }}</th>
                                                         <th scope="col">{{ $sale_info->price }}</th>
                                                         <th scope="col">{{ $sale_info->discount }}</th>
@@ -125,18 +125,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             @endforeach
                         </td>
                     </tr>
 
                     <tr class="table-success">
-                        <td colspan="2">
+                        <td colspan="2" style="text-align:right">
                             <button class="btn btn-primary" onclick="history.back()">回到上頁</button>
 
                         </td>
 
                         <td colspan="2">
-                            <button class="btn btn-primary">修改資料</button>
+                            <button class="btn btn-primary" onclick="javascript:location.href='/member/modify'">修改資料</button>
                         </td>
                     </tr>
 
@@ -150,7 +151,6 @@
 
 
 
-
     @endsection
 
 @section('script')
@@ -158,5 +158,6 @@
         $(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
+
     </script>
 @endsection
