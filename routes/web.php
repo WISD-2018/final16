@@ -44,7 +44,7 @@ Route::get('/emergency',function (){
 
 Route::get('/member', 'MemberController@index');
 
-<<<<<<< HEAD
+
 Route::get('/member/modify', 'MemberController@modify');
 
 Route::post('/member/modify', 'MemberController@test');
@@ -55,9 +55,4 @@ Route::post('/member/upload/img','MemberController@upload_img');
 Route::get('/test','BuggyController@index');
 
 Route::post('result','BuggyController@result');
-=======
-Route::get('/test','BuggyController@index');
 
-Route::post('result','BuggyController@result');
-
->>>>>>> 9da1b95c7e1ed12479f44a44d68a86fd9bea85de
