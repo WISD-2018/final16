@@ -22,6 +22,10 @@ class MemberController extends Controller
             ,'sales'=>$sales,'sales_info'=>$sales_info]);
     }
 
+    public function test(Request $request){
+        return $request;
+    }
+
     public function modify(){
         $member=Member::find(1);
         $payments=Payment::all()->where('member_id',1);
