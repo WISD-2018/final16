@@ -26,11 +26,17 @@ Route::get('test',function (){
 });
 
 //
-Route::get('/buggy','BuggyController@index');
+Route::group(['prefix'=> 'buggy'],function (){
+    Route::get('/admin/{member_id}/{buggies_id}','BuggyController@index');
+    Route::get('/{member_id}/{buggies_id}','BuggyController@show');
+});
 
 Route::get('/feedback',function (){
    return view('feedback',['title'=>'問題回報']);
 });
+
+
+
 
 Route::get('/emergency',function (){
    return view('emergency',['title'=>'緊急回報']);
@@ -38,6 +44,7 @@ Route::get('/emergency',function (){
 
 Route::get('/member', 'MemberController@index');
 
+<<<<<<< HEAD
 Route::get('/member/modify', 'MemberController@modify');
 
 Route::post('/member/modify', 'MemberController@test');
@@ -48,3 +55,9 @@ Route::post('/member/upload/img','MemberController@upload_img');
 Route::get('/test','BuggyController@index');
 
 Route::post('result','BuggyController@result');
+=======
+Route::get('/test','BuggyController@index');
+
+Route::post('result','BuggyController@result');
+
+>>>>>>> 9da1b95c7e1ed12479f44a44d68a86fd9bea85de
