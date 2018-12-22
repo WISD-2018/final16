@@ -47,27 +47,38 @@
         {
             $.ajax({
                 type: 'get',
-                url: 'http://127.0.0.1:8000/buggy/admin/{{$id}}',
+                url: 'http://127.0.0.1:8000/buggy/admin/2/{{$buggies_id}}',
                 dataType: 'Json',
                 success: function (data) {
-                    var product_id=[];
-                    var amount=[];
-                    var price=[];
-                    var img=[];
-                    var str="";
 
-                    for (var i in data){
-                        product_id.push(data[i].product_id);
+
+                    // var product_id=[];
+                    var amount=[];
+                    var img=[];
+
+                    var name=[];
+                    var price=[];
+
+                    var len=(data.length)/2;
+
+                    for (i = 0; i < len; i++) {
                         amount.push(data[i].amount);
-                        price.push(data[i].price);
                         img.push(data[i].img);
 
                     }
-                    console.log({{$id}});
-                    console.log(data);
-                    console.log(product_id,amount,price,img);
 
-                    for (i in data){
+                    for (i =len ; i < data.length ; i++){
+                        name.push(data[i].name);
+                        price.push(data[i].price);
+                    }
+                    console.log(amount,img,price,name);
+
+
+                    var str="";
+                    var total=0;
+
+                    for (i = 0; i < len; i++){
+                        total+=price[i]*amount[i];
                         str +="<tr>"+"<td>" +
                             "<div class=\"container\">\n" +
                             "                    <div class=\"row\">\n" +
@@ -82,7 +93,7 @@
                             "                                <tr align=\"left\" valign=\"center\">\n" +
                             "                                    <td>\n" +
                             "                                        <p style=\"color:#666;font-size:18pt;text-decoration:none;border: 0px\" >\n" +
-                            "                                            aaaaaaaaaaaaa</p>\n" +
+                                                                        name[i]+"</p>\n" +
                             "                                        <input style=\"font-weight:bold;\" type=\"text\" disabled=\"disabled\";  value=\"單價\"/>\n" +
                             "                                        <input style=\"font-weight:bold;\" type=\"text\" disabled=\"disabled\";  value=\"數量\"/>\n" +
                             "                                        <input style=\"font-weight:bold;\" type=\"text\" disabled=\"disabled\";  value=\"小計\"/><br>\n" +
@@ -100,6 +111,7 @@
 
 
                     document.getElementById("tbody_result").innerHTML= str;
+                    document.getElementById("total").innerHTML=total;
                 }
             });
         }
@@ -154,7 +166,7 @@
     <div class="container-sm">
         <div align="right" class="row align-items-end"style="margin: 0">
             <div class="col-7"><span><h5>應付金額</h5></span></div>
-            <div class="col-4"><span><h4>$8788</h4></span></div>
+            <div class="col-4"><span><h4 id =total>$8788</h4></span></div>
         </div>
     </div>
     <div align="center" style="margin-top: 10%">

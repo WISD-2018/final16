@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Buggies_info extends Model
 {
     //
-    protected $table='buggies';
+    protected $table='buggies_info';
 
 
 }
