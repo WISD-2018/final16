@@ -54389,12 +54389,18 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             result: '',
-            error: ''
+            error: '',
+            btnStatus: 'btn-secondary',
+            activateClass: ''
         };
     },
 
@@ -54404,44 +54410,31 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(result) {
                 var _this = this;
 
-                var message;
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                _context.prev = 0;
+                                try {
+                                    this.result = result;
+                                    this.pauseCamera(); // 暫停鏡頭準備調用
+                                    this.btnStatus = 'btn-primary';
+                                    this.activateClass = 'activate';
 
-                                this.result = result;
-                                this.pauseCamera(); // 暫停鏡頭準備調用
+                                    Swal('Good job!', message, 'success').then(function () {
+                                        _this.unPauseCamera();
+                                    });
+                                } catch (error) {
+                                    Swal('Whoops!', error.message, 'error').then(function () {
+                                        _this.unPauseCamera();
+                                    });
+                                }
 
-                                // 調用 redeem 進行兌換
-                                _context.next = 5;
-                                return this.redeem(result);
-
-                            case 5:
-                                message = _context.sent;
-
-                                // 兌換成功後彈出訊息並重新啟用鏡頭
-                                Swal('Good job!', message, 'success').then(function () {
-                                    _this.unPauseCamera();
-                                });
-                                _context.next = 12;
-                                break;
-
-                            case 9:
-                                _context.prev = 9;
-                                _context.t0 = _context['catch'](0);
-
-                                Swal('Whoops!', _context.t0.message, 'error').then(function () {
-                                    _this.unPauseCamera();
-                                });
-
-                            case 12:
+                            case 1:
                             case 'end':
                                 return _context.stop();
                         }
                     }
-                }, _callee, this, [[0, 9]]);
+                }, _callee, this);
             }));
 
             function onDecode(_x) {
@@ -54455,17 +54448,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
         },
         unPauseCamera: function unPauseCamera() {
             this.paused = false;
-        },
-        redeem: function redeem(content) {
-            return new Promise(function (resolve, reject) {
-                // 兌換票券請求
-                // if (content) {
-                //     resolve('Success');
-                // } else {
-                //     reject('failed');
-                // }
-                resolve('Success');
-            });
         },
         jump: function jump(result) {
             window.location.href = this.result;
@@ -55313,14 +55295,23 @@ var render = function() {
     [
       _c("p", { staticClass: "error" }, [_vm._v(_vm._s(_vm.error))]),
       _vm._v(" "),
-      _c("p", { staticClass: "decode-result" }, [
-        _vm._v("Last result:\n        "),
+      _c("p", { staticClass: "decode-result", attrs: { align: "center" } }, [
+        _vm._v("請掃描籃子上的QRcode獲取連結\n        "),
         _c("b", [_vm._v("\n            " + _vm._s(_vm.result) + "\n        ")])
       ]),
       _vm._v(" "),
-      _c("button", { on: { click: _vm.jump } }, [_vm._v(" 跳轉")]),
+      _c("qrcode-stream", { on: { decode: _vm.onDecode, init: _vm.onInit } }),
       _vm._v(" "),
-      _c("qrcode-stream", { on: { decode: _vm.onDecode, init: _vm.onInit } })
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-lg btn-block",
+          class: [_vm.btnStatus, _vm.activateClass],
+          attrs: { id: "blend", type: "button" },
+          on: { click: _vm.jump }
+        },
+        [_vm._v("\n        綁定籃子\n    ")]
+      )
     ],
     1
   )

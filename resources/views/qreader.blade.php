@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html style="height: 100%">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Qrcode Reader</title>
-</head>
-<body style="height: 100%">
-<div id="app">
-    <qrcode-reader></qrcode-reader>
-</div>
-<script src="{{ mix('js/app.js') }}"></script>
+@extends('layout2.default')
 
-</body>
-</html>
+@section('content')
+    <div id="app">
+        <qrcode-reader></qrcode-reader>
+    </div>
+    @endsection
+
+@section('script')
+    <script src="{{ mix('js/app.js') }}"></script>
+    @endsection
+

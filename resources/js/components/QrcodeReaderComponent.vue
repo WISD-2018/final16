@@ -2,15 +2,19 @@
     <div>
         <p class="error">{{ error }}</p>
 
-        <p class="decode-result">Last result:
+        <p class="decode-result" align="center">請掃描籃子上的QRcode獲取連結
             <b>
                 {{ result }}
             </b>
         </p>
-
-        <button @click="jump"> 跳轉</button>
-
         <qrcode-stream @decode="onDecode" @init="onInit" />
+        <button id="blend" @click="jump" type="button" class="btn btn-lg btn-block"
+                v-bind:class="[btnStatus,activateClass]">
+            綁定籃子
+        </button>
+
+
+
     </div>
 </template>
 
@@ -20,6 +24,8 @@
             return {
                 result: '',
                 error: '',
+                btnStatus:'btn-secondary',
+                activateClass:''
             }
         },
 
@@ -28,10 +34,9 @@
                 try {
                     this.result = result;
                     this.pauseCamera(); // 暫停鏡頭準備調用
+                    this.btnStatus='btn-primary';
+                    this.activateClass='activate';
 
-                    // 調用 redeem 進行兌換
-                    let message = await this.redeem(result);
-                    // 兌換成功後彈出訊息並重新啟用鏡頭
                     Swal('Good job!',
                         message,
                         'success').then(() => {
@@ -52,17 +57,6 @@
                 this.paused = false
             },
 
-            redeem (content) {
-                return new Promise((resolve, reject) => {
-                    // 兌換票券請求
-                    // if (content) {
-                    //     resolve('Success');
-                    // } else {
-                    //     reject('failed');
-                    // }
-                    resolve('Success');
-                })
-            },
             jump(result){
                 window.location.href =this.result;
             },
