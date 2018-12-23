@@ -51,6 +51,10 @@ Route::post('/member/modify', 'MemberController@test');
 
 Route::post('/member/upload/img','MemberController@upload_img');
 
+Route::get('/qrcode/reader',function (){
+    return view('qreader');
+});
+
 
 Route::get('/test','BuggyController@index');
 
