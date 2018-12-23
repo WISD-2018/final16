@@ -29,6 +29,7 @@ Route::get('test',function (){
 Route::group(['prefix'=> 'buggy'],function (){
     Route::get('/admin/{member_id}/{buggies_id}','BuggyController@index');
     Route::get('/{member_id}/{buggies_id}','BuggyController@show');
+    Route::post('/{member_id}/{buggies_id}/waitfor','BuggyController@waitfor');
 });
 
 Route::get('/feedback',function (){

@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <style>
+    <style xmlns="http://www.w3.org/1999/html">
         img{border: none}
         body{background-color: none;max-width:100% ;
             margin: auto; }
@@ -112,6 +112,8 @@
 
                     document.getElementById("tbody_result").innerHTML= str;
                     document.getElementById("total").innerHTML=total;
+                    document.getElementById("total1").innerHTML=total;
+                    document.getElementById("total2").value=total;
                 }
             });
         }
@@ -127,36 +129,36 @@
         </thead>
         <tbody id="tbody_result">
 
-        <tr>
-            <td>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="https://www.obdesign.com.tw/product.aspx?seriesID=DA6205-"
-                               target="_blank">
-                                <img class="img-fluid" src="https://image.obdesign.com.tw/catalog/170801xxx/DA6205-L.jpg">
-                            </a>
-                        </div>
-                        <div class="col-8">
-                            <table class="table-borderless">
-                                <tr align="left" valign="center">
-                                    <td>
-                                        <p style="color:#666;font-size:18pt;text-decoration:none;border: 0px" >
-                                            aaaaaaaaaaaaa</p>
-                                        <input style="font-weight:bold;" type="text" disabled="disabled";  value="單價"/>
-                                        <input style="font-weight:bold;" type="text" disabled="disabled";  value="數量"/>
-                                        <input style="font-weight:bold;" type="text" disabled="disabled";  value="小計"/><br>
-                                        <input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>
-                                        <input style="color: #1b4b72" type="text" disabled="disabled";  value="1"/>
-                                        <input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
+        {{--<tr>--}}
+            {{--<td>--}}
+                {{--<div class="container">--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="col-4">--}}
+                            {{--<a href="https://www.obdesign.com.tw/product.aspx?seriesID=DA6205-"--}}
+                               {{--target="_blank">--}}
+                                {{--<img class="img-fluid" src="https://image.obdesign.com.tw/catalog/170801xxx/DA6205-L.jpg">--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-8">--}}
+                            {{--<table class="table-borderless">--}}
+                                {{--<tr align="left" valign="center">--}}
+                                    {{--<td>--}}
+                                        {{--<p style="color:#666;font-size:18pt;text-decoration:none;border: 0px" >--}}
+                                            {{--aaaaaaaaaaaaa</p>--}}
+                                        {{--<input style="font-weight:bold;" type="text" disabled="disabled";  value="單價"/>--}}
+                                        {{--<input style="font-weight:bold;" type="text" disabled="disabled";  value="數量"/>--}}
+                                        {{--<input style="font-weight:bold;" type="text" disabled="disabled";  value="小計"/><br>--}}
+                                        {{--<input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>--}}
+                                        {{--<input style="color: #1b4b72" type="text" disabled="disabled";  value="1"/>--}}
+                                        {{--<input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>--}}
+                                    {{--</td>--}}
+                                {{--</tr>--}}
+                            {{--</table>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</td>--}}
+        {{--</tr>--}}
 
 
         </tbody>
@@ -166,15 +168,40 @@
     <div class="container-sm">
         <div align="right" class="row align-items-end"style="margin: 0">
             <div class="col-7"><span><h5>應付金額</h5></span></div>
-            <div class="col-4"><span><h4 id =total>$8788</h4></span></div>
+            <div class="col-4"><span><h4 id =total></h4></span></div>
         </div>
     </div>
     <div align="center" style="margin-top: 10%">
     <span>
-           <button type="button" class="btn btn-primary" style="width:70%;height:40px;font-size:100%;">
-               <b>結帳</b>
-           </button>
+        <button type="button" class="btn btn-primary" style="width:70%;height:40px;font-size:100%;" data-toggle="modal" data-target="#exampleModal">
+            結帳
+        </button>
     </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">是否要結帳</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    總共金額是<h3 id =total1></h3>元
+                </div>
+                <div class="modal-footer">
+                    <form action="/buggy/{{$member_id}}/{{$buggies_id}}/waitfor" method="POST">
+                        {{ csrf_field() }}
+                        <input id="total2" type="hidden" name="total" value="">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">確定</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     </body>
