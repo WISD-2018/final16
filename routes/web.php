@@ -29,6 +29,7 @@ Route::get('test',function (){
 Route::group(['prefix'=> 'buggy'],function (){
     Route::get('/admin/{member_id}/{buggies_id}','BuggyController@index');
     Route::get('/{member_id}/{buggies_id}','BuggyController@show');
+    Route::post('/{member_id}/{buggies_id}/waitfor','BuggyController@waitfor');
 });
 
 Route::get('/feedback',function (){
@@ -43,6 +44,18 @@ Route::get('/emergency',function (){
 });
 
 Route::get('/member', 'MemberController@index');
+
+
+Route::get('/member/modify', 'MemberController@modify');
+
+Route::post('/member/modify', 'MemberController@test');
+
+Route::post('/member/upload/img','MemberController@upload_img');
+
+Route::get('/qrcode/reader',function (){
+    return view('qreader',['title'=>'綁定籃子']);
+});
+
 
 Route::get('/test','BuggyController@index');
 

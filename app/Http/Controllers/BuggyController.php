@@ -37,19 +37,13 @@ class BuggyController extends Controller
     public function show($member_id,$buggies_id)
     {
         // Validate the request...
-        $id=Buggies_info::all('buggies_id','product_id')->where('buggies_id',$buggies_id);
-        $pro_id=[];
-        for ($i=0 ; $i < count($id) ; $i++){
-            array_push($pro_id,json_decode($id)[$i]->product_id);
-        }
 
-        $products=Products::all()->find($pro_id);
 
-        return  view('buggy',['products'=>$products,'buggies_id'=>$buggies_id,'title'=>'購物車']);
+        return  view('buggy',['member_id'=>$member_id,'buggies_id'=>$buggies_id,'title'=>'購物車']);
 
     }
 
-    public function result(Request $request){
-        return $request->total;
+    public function waitfor($member_id,$buggies_id,Request $request){
+        return view('waitfor',['member_id'=>$member_id,'buggies_id'=>$buggies_id,'total'=>$request->total,'title'=>'等候結帳']);
     }
 }

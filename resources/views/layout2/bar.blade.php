@@ -11,7 +11,7 @@
     <!-- .navbar-brand 左上LOGO位置 -->
     <a class="navbar-brand" href="/">
         <img src="{{ URL::asset('images/shopping-cart.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-        <span class="h3 mx-1">Self-Service Store</span>
+        <span class="h3 mx-1">Store-Go</span>
     </a>
 
     <!-- .collapse.navbar-collapse 用於外層中斷點群組和隱藏導覽列內容 -->
