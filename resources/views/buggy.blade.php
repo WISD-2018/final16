@@ -63,13 +63,13 @@
 
                     for (i = 0; i < len; i++) {
                         amount.push(data[i].amount);
-                        img.push(data[i].img);
 
                     }
 
                     for (i =len ; i < data.length ; i++){
                         name.push(data[i].name);
                         price.push(data[i].price);
+                        img.push(data[i].img);
                     }
                     console.log(amount,img,price,name);
 

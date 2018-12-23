@@ -22,16 +22,14 @@ class BuggyController extends Controller
             array_push($pro_id,json_decode($id)[$i]->product_id);
         }
 
-        $products=Products::all('id','name','price')->find($pro_id);
+        $products=Products::all('id','name','price','img')->find($pro_id);
 
 
         $aa = json_decode($buggy_list);
 
         foreach ($products as $product){
             array_push($aa,$product);
-
         }
-
 
         return $aa;
     }
