@@ -8,7 +8,7 @@
             </b>
         </p>
 
-        <button @click="link"> 綁定籃子</button>
+        <button @click="jump"> 跳轉</button>
 
         <qrcode-stream @decode="onDecode" @init="onInit" />
     </div>
@@ -20,7 +20,6 @@
             return {
                 result: '',
                 error: '',
-                link:'google.com'
             }
         },
 
@@ -63,6 +62,9 @@
                     // }
                     resolve('Success');
                 })
+            },
+            jump(result){
+                window.location.href =this.result;
             },
 
             async onInit (promise) {
