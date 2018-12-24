@@ -10,7 +10,8 @@
 | used to check if an authenticated user can listen to the channel.
 |
 */
+use App\Buggies_info;
 
-Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+Broadcast::channel('buggy.{sale_id}', function ($sale_id) {
+    return (int) $sale_id === (int) Buggies_info::all('sale_id')->where('sale_id',1);
 });

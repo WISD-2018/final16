@@ -43,6 +43,10 @@
         }
     </style>
     <script>
+        window.Echo.private('buggy.${sale_id}')
+            .listen('ShippingStatusUpdated', (e) => {
+                console.log(e.update);
+            });
         function ajaxget()
         {
             $.ajax({
