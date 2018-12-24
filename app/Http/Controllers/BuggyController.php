@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Buggies;
 use App\Buggies_info;
 use App\Products;
 use App\Products_info;
@@ -45,5 +46,11 @@ class BuggyController extends Controller
 
     public function waitfor($member_id,$buggies_id,Request $request){
         return view('waitfor',['member_id'=>$member_id,'buggies_id'=>$buggies_id,'total'=>$request->total,'title'=>'等候結帳']);
+    }
+
+    public function blending($buggy_id,$member_id){
+        $data=['id'=>$buggy_id,'member_id'=>$member_id,'status'=>'已綁定'];
+        Buggies::create($data);
+
     }
 }
