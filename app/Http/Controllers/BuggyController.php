@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Buggies;
 use App\Buggies_info;
+use App\Events\ShoppingStatusUpdate;
 use App\Products;
 use App\Products_info;
 use Illuminate\Http\Request;
@@ -48,6 +49,7 @@ class BuggyController extends Controller
         return view('waitfor',['member_id'=>$member_id,'buggies_id'=>$buggies_id,'total'=>$request->total,'title'=>'等候結帳']);
     }
 
+<<<<<<< HEAD
     public function blending($buggy_id,$member_id){
         $buggy=Buggies::find($buggy_id);
         if($buggy->status=='已綁定'){
@@ -76,5 +78,10 @@ class BuggyController extends Controller
         $product=Buggies_info::where('product_id',$request->id)->delete();
         return redirect('/shopping');
 
+=======
+    public function update($sale_id){
+        $info=Buggies_info::all()->where('sale_id',$sale_id);
+        event(new ShoppingStatusUpdate($info));
+>>>>>>> 6c61f6b2c3070396e35409f494899f8427f7ecf5
     }
 }
