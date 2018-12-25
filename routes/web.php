@@ -68,3 +68,10 @@ Route::get('/test','BuggyController@index');
 
 Route::post('result','BuggyController@result');
 
+Route::get('/shopping',function (){
+    return view('product_insert',['title'=>'新增購物商品']);
+});
+
+Route::post('/shopping','BuggyController@product_insert');
+Route::post('/shopping/destory','BuggyController@product_destory');
+

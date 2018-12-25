@@ -49,8 +49,32 @@ class BuggyController extends Controller
     }
 
     public function blending($buggy_id,$member_id){
-        $data=['id'=>$buggy_id,'member_id'=>$member_id,'status'=>'已綁定'];
-        Buggies::create($data);
+        $buggy=Buggies::find($buggy_id);
+        if($buggy->status=='已綁定'){
+            return '<h1>此購物籃已綁定請使用別的購物籃</h1>';
+        }else{
+            $buggy->member_id=$member_id;
+            $buggy->status='已綁定';
+            $buggy->save();
+            return redirect('buggy/'.$member_id.'/'.$buggy_id);
+        }
+
+
+
+
+    }
+
+    public function product_insert(Request $request){
+        $data=['buggies_id'=>1,'product_id'=>$request->id,'amount'=>$request->amount
+            ,'sale_id'=>1];
+        Buggies_info::create($data);
+
+        return redirect('/shopping');
+    }
+
+    public function product_destory(Request $request){
+        $product=Buggies_info::where('product_id',$request->id)->delete();
+        return redirect('/shopping');
 
     }
 }

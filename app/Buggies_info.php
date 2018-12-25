@@ -9,5 +9,5 @@ class Buggies_info extends Model
     //
     protected $table='buggies_info';
 
-
+    protected $fillable=['buggies_id','product_id','amount','sale_id'];
 }
