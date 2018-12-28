@@ -103,11 +103,11 @@
                                                     <tbody>
                                                 @foreach($sales_info->where('sales_id',$sale->id)->get() as $sale_info)
                                                     <tr class="table-active">
-                                                        <th scope="col">{{ $sale_info->products }}</th>
-                                                        <th scope="col">{{ $sale_info->price }}</th>
-                                                        <th scope="col">{{ $sale_info->discount }}</th>
-                                                        <th scope="col">{{ $sale_info->amount }}</th>
-                                                        <th scope="col">{{ $t=$sale_info->price * (1-$sale_info-> discount) * $sale_info->amount}}
+                                                        <th scope="col">{{ $name=$products->where('id',$sale_info->product_id)->first()->name }}</th>
+                                                        <th scope="col">{{ $price=$products->where('id',$sale_info->product_id)->first()->price }}</th>
+                                                        <th scope="col">{{ $discount=$products->where('id',$sale_info->product_id)->first()->discount }}</th>
+                                                        <th scope="col">{{ $amount=$sale_info->amount }}</th>
+                                                        <th scope="col">{{ $t=$price*(1-$discount)*$amount}}
                                                         </th>
                                                     @php
                                                         $total=$total+$t

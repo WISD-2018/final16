@@ -14,16 +14,13 @@
 
 
 Route::get('/', function () {
-    return view('layout.default');
+    return view('layout2.default',['title'=>'首頁']);
 });
 
 Route::get('v2',function (){
     return view('layout2.default',['title'=>'v2']);
 });
 
-Route::get('test',function (){
-   return view('test');
-});
 
 //
 Route::group(['prefix'=> 'buggy'],function (){
@@ -51,7 +48,7 @@ Route::get('/member', 'MemberController@index');
 
 Route::get('/member/modify', 'MemberController@modify');
 
-Route::post('/member/modify', 'MemberController@test');
+Route::post('/member/modify', 'MemberController@update');
 
 Route::post('/member/upload/img','MemberController@upload_img');
 
@@ -64,17 +61,46 @@ Route::get('/qrcode/reader',function (){
 });
 
 
-Route::get('qrcode/blending/{buggy_id}/{member_id}','BuggyController@blending');
+Route::get('qrcode/blending/{buggy_id}','BuggyController@blending');
 
 
-Route::get('/test','BuggyController@index');
 
 Route::post('result','BuggyController@result');
 
 Route::get('/shopping',function (){
     return view('product_insert',['title'=>'新增購物商品']);
 });
-
 Route::post('/shopping','BuggyController@product_insert');
 Route::post('/shopping/destory','BuggyController@product_destory');
+Route::post('/shopping/update','BuggyController@product_update');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/myid',function (){
+    if(\Illuminate\Support\Facades\Auth::check()){
+        return \Illuminate\Support\Facades\Auth::id();
+    }
+});
+
+Route::group(['middleware' => ['web']], function () {
+    //认证路由
+    Route::get('auth/login','MemberController@getLogin');
+    Route::post('auth/login','MemberController@postLogin');
+    Route::get('auth/logout','MemberController@getLogout');
+    Route::post('auth/logout','MemberController@postLogout');
+    //注册路由
+    Route::get('auth/register','MemberController@getRegister');
+    Route::post('auth/register','MemberController@postRegister');
+
+});
+
+Route::get('/auth/check',function (){
+    if(\Illuminate\Support\Facades\Auth::check()){
+        return 'check'.\Illuminate\Support\Facades\Auth::id();
+    }else{
+        return 'failed';
+    }
+});
+
 

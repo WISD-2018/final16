@@ -20,13 +20,27 @@
         <ul class="navbar-nav mr-auto">
             <!-- active表示當前頁面 -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">首頁<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">首頁<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">登入</a>
+            @if(\Illuminate\Support\Facades\Auth::check())
+                    <a class="nav-link" href="{{ url('auth/logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('登出') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ url('auth/logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @else
+                    <a class="nav-link" href="/auth/login">登入</a>
+                @endif
+
+
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">註冊</a>
+                <a class="nav-link" href="auth/register">註冊</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">特價資訊</a>
