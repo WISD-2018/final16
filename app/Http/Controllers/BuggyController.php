@@ -17,6 +17,7 @@ class BuggyController extends Controller
     //
     public function index($member_id,$buggies_id)
     {
+
         // Validate the request...
         $buggy_list= Buggies_info::all('buggies_id','product_id','amount')->where('buggies_id',$buggies_id);
 
@@ -38,18 +39,38 @@ class BuggyController extends Controller
         return $aa;
     }
 
-    public function show($member_id,$buggies_id)
+    public function show()
     {
         // Validate the request...
 
+        if(Auth::check()){
+            $member_id=Auth::id();
+        }else{
+            return \redirect('/auth/login');
+        }
+        $buggies_id=Buggies::where(['member_id'=>$member_id,'status'=>'已綁定'])->first();
+        if(!empty($buggies_id)){
+            return  view('buggy',['member_id'=>$member_id,'buggies_id'=>$buggies_id->id,'title'=>'購物車']);
+        }else{
+            return '<h1>請先綁定購物籃子</h1>';
+        }
 
-        return  view('buggy',['member_id'=>$member_id,'buggies_id'=>$buggies_id,'title'=>'購物車']);
 
     }
 
-    public function waitfor($member_id,$buggies_id,Request $request){
-        return view('waitfor',['member_id'=>$member_id,'buggies_id'=>$buggies_id,'total'=>$request->total,'title'=>'等候結帳']);
-    }
+    public function waitfor(Request $request){
+        if(Auth::check()){
+            $member_id=Auth::id();
+        }else{
+            return \redirect('/auth/login');
+        }
+        $buggies_id=Buggies::where(['member_id'=>$member_id,'status'=>'已綁定'])->first();
+        if(!empty($buggies_id)) {
+            return view('waitfor', ['member_id' => $member_id, 'buggies_id' => $buggies_id, 'total' => $request->total, 'title' => '等候結帳']);
+        }else{
+            return '<h1>請先綁定購物籃子</h1>';
+        }
+        }
 
 
     public function blending($buggy_id){
