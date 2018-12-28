@@ -37,14 +37,11 @@ Route::get('/feedback',function (){
 });
 
 
-
-
 Route::get('/emergency',function (){
    return view('emergency',['title'=>'緊急回報']);
 });
 
 Route::get('/member', 'MemberController@index');
-
 
 Route::get('/member/modify', 'MemberController@modify');
 
@@ -60,47 +57,28 @@ Route::get('/qrcode/reader',function (){
     return view('qreader',['title'=>'綁定籃子']);
 });
 
-
 Route::get('qrcode/blending/{buggy_id}','BuggyController@blending');
-
-
 
 Route::post('result','BuggyController@result');
 
+
+Route::group(['middleware' => ['web']], function () {
+    //登入登出
+    Route::get('auth/login','MemberController@getLogin');
+    Route::post('auth/login','MemberController@postLogin');
+    Route::get('auth/logout','MemberController@getLogout');
+    Route::post('auth/logout','MemberController@postLogout');
+    //註冊
+    Route::get('auth/register','MemberController@getRegister');
+    Route::post('auth/register','MemberController@postRegister');
+
+});
+
+//測試功能
 Route::get('/shopping',function (){
     return view('product_insert',['title'=>'新增購物商品']);
 });
 Route::post('/shopping','BuggyController@product_insert');
 Route::post('/shopping/destory','BuggyController@product_destory');
 Route::post('/shopping/update','BuggyController@product_update');
-
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/myid',function (){
-    if(\Illuminate\Support\Facades\Auth::check()){
-        return \Illuminate\Support\Facades\Auth::id();
-    }
-});
-
-Route::group(['middleware' => ['web']], function () {
-    //认证路由
-    Route::get('auth/login','MemberController@getLogin');
-    Route::post('auth/login','MemberController@postLogin');
-    Route::get('auth/logout','MemberController@getLogout');
-    Route::post('auth/logout','MemberController@postLogout');
-    //注册路由
-    Route::get('auth/register','MemberController@getRegister');
-    Route::post('auth/register','MemberController@postRegister');
-
-});
-
-Route::get('/auth/check',function (){
-    if(\Illuminate\Support\Facades\Auth::check()){
-        return 'check'.\Illuminate\Support\Facades\Auth::id();
-    }else{
-        return 'failed';
-    }
-});
-
 

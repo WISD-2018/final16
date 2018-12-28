@@ -46,7 +46,11 @@
                 <a class="nav-link" href="#">特價資訊</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">商品資訊</a>
+                <a class="nav-link" href="/member">會員資訊</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/qrcode/reader">綁定購物籃</a>
             </li>
             <!-- .dropdown Navbar選項使用下拉式選單 -->
             <li class="nav-item dropdown">
