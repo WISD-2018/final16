@@ -23,44 +23,64 @@
                 <a class="nav-link" href="/">首頁<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/product">商品資訊</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/product">特價資訊</a>
+            </li>
+            <li class="nav-item">
             @if(\Illuminate\Support\Facades\Auth::check())
-                    <a class="nav-link" href="{{ url('auth/logout') }}"
-                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        {{ __('登出') }}
-                    </a>
 
-                    <form id="logout-form" action="{{ url('auth/logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
                 @else
-                    <a class="nav-link" href="/auth/login">登入</a>
+
                 @endif
 
 
             </li>
+            @if(!\Illuminate\Support\Facades\Auth::check())
+             <li class="nav-item">
+                 <a class="nav-link" href="{{ url('/auth/login') }}">登入</a>
+             </li>
             <li class="nav-item">
-                <a class="nav-link" href="auth/register">註冊</a>
+                <a class="nav-link" href="{{ url('auth/register') }}">註冊</a>
             </li>
+            @else
             <li class="nav-item">
-                <a class="nav-link" href="#">特價資訊</a>
+                <a class="nav-link" href="{{ '/member' }}">會員資訊</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/member">會員資訊</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">購物籃</a>
+                    <!-- .dropdown-menu 下拉選單內容 -->
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ url('/qrcode/reader') }}">綁定購物籃</a>
+                        <a class="dropdown-item" href="{{ url('/buggy') }}">購物籃</a>
+                    </div>
+                </li>
+
+
+
+            <!-- .dropdown Navbar選項使用下拉式選單 -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">問題回報</a>
+                <!-- .dropdown-menu 下拉選單內容 -->
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ url('/feedback') }}">意見回饋</a>
+                    <a class="dropdown-item" href="{{ url('emergency') }}">及時回報</a>
+                </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/qrcode/reader">綁定購物籃</a>
+                <a class="nav-link" href="{{ url('auth/logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    {{ __('登出') }}
+                </a>
+
+                <form id="logout-form" action="{{ url('auth/logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </li>
-            <!-- .dropdown Navbar選項使用下拉式選單 -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">作品集</a>
-                <!-- .dropdown-menu 下拉選單內容 -->
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">網頁設計</a>
-                    <a class="dropdown-item" href="#">平面設計</a>
-                </div>
-            </li>
+            @endif
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

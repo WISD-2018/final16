@@ -91,7 +91,11 @@ class MemberController extends Controller
 
     public function getLogin()
     {
-        return view('auth.login',['title'=>'使用者登入']);
+        if(Auth::check()){
+            return \redirect('/');
+        }else{
+            return view('auth.login',['title'=>'使用者登入']);
+        }
     }
 
     public function postLogin(Request $request)
@@ -119,7 +123,12 @@ class MemberController extends Controller
 
     public function getRegister()
     {
-        return view('auth.register',['title'=>'註冊']);
+        if(Auth::check()){
+            return \redirect('/');
+        }else{
+            return view('auth.register',['title'=>'註冊']);
+        }
+
     }
 
     public function postRegister(Request $request)
@@ -137,6 +146,7 @@ class MemberController extends Controller
             'remember_token' => str_random(10)
 
         ]);
+        return \redirect('/auth/login');
     }
 
 
