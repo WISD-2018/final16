@@ -21,7 +21,7 @@ class ShoppingStatusUpdate implements ShouldBroadcast
      * @return void
      */
     public $sale_id;
-    public function __construct(Buggies_info $sale_id)
+    public function __construct($sale_id)
     {
         //
         $this->sale_id = $sale_id;
@@ -34,6 +34,9 @@ class ShoppingStatusUpdate implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('buggy.'.$this->sale_id);
+        return new Channel('mychannel');
+    }
+    public function  broadcastWith(){
+        return ['data'=>$this->sale_id];
     }
 }

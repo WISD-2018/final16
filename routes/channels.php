@@ -12,6 +12,6 @@
 */
 use App\Buggies_info;
 
-Broadcast::channel('buggy.{sale_id}', function ($sale_id) {
-    return (int) $sale_id === (int) Buggies_info::all('sale_id')->where('sale_id',1);
+Broadcast::channel('mychannel', function () {
+    return true;
 });

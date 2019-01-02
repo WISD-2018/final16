@@ -48,8 +48,11 @@ class BuggyController extends Controller
         return view('waitfor',['member_id'=>$member_id,'buggies_id'=>$buggies_id,'total'=>$request->total,'title'=>'等候結帳']);
     }
 
-    public function update($sale_id){
-        $info=Buggies_info::all()->where('sale_id',$sale_id);
-        event(new ShoppingStatusUpdate($info));
+    public function test(){
+        return view('testQQ');
+
+    }
+    public function test2($id){
+    broadcast(new ShoppingStatusUpdate($id));
     }
 }
