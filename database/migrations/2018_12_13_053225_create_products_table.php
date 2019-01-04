@@ -17,8 +17,11 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->char('name',20);
             $table->integer('price');
-            $table->integer('amount');
-            $table->integer('safety_stock');
+            $table->integer('discount');
+            $table->string('img');
+            $table->string('describe');
+            $table->string('contain');
+            $table->string('is_tax');
             $table->string('class_id');
             $table->string('vendor_id');
             $table->timestamps();

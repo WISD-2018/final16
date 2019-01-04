@@ -17,6 +17,8 @@ class CreateBuggiesInfoTable extends Migration
             $table->string('buggies_id');
             $table->string('product_id');
             $table->integer('amount');
+            $table->string('sale_id');
+
             $table->timestamps();
         });
     }

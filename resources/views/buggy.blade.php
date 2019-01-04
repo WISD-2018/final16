@@ -47,7 +47,7 @@
         {
             $.ajax({
                 type: 'get',
-                url: 'http://127.0.0.1:8000/buggy/admin/2/{{$buggies_id}}',
+                url: 'http://127.0.0.1:8000/buggy/admin/{{$buggies_id}}',
                 dataType: 'Json',
                 success: function (data) {
 
@@ -63,13 +63,13 @@
 
                     for (i = 0; i < len; i++) {
                         amount.push(data[i].amount);
-                        img.push(data[i].img);
 
                     }
 
                     for (i =len ; i < data.length ; i++){
                         name.push(data[i].name);
                         price.push(data[i].price);
+                        img.push(data[i].img);
                     }
                     console.log(amount,img,price,name);
 
@@ -193,7 +193,7 @@
                     總共金額是<h3 id =total1></h3>元
                 </div>
                 <div class="modal-footer">
-                    <form action="/buggy/{{$member_id}}/{{$buggies_id}}/waitfor" method="POST">
+                    <form action="/buggy/waitfor" method="POST">
                         {{ csrf_field() }}
                         <input id="total2" type="hidden" name="total" value="">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>

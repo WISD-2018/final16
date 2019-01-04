@@ -2,6 +2,7 @@
 
 @section('content')
     <div id="app">
+        {{ csrf_field() }}
         <qrcode-reader></qrcode-reader>
     </div>
     @endsection

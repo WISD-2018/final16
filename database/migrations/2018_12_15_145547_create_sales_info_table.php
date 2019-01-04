@@ -15,10 +15,8 @@ class CreateSalesInfoTable extends Migration
     {
         Schema::create('sales_info', function (Blueprint $table) {
             $table->string('sales_id');
-            $table->string('products');
-            $table->integer('price');
+            $table->string('product_id');
             $table->integer('amount');
-            $table->float('discount');
             $table->timestamps();
         });
     }

@@ -35,13 +35,25 @@
                         <h3 id =total1>若按是，可瀏覽購物車</h3>
                     </div>
                     <div class="modal-footer">
-                        <form action="/buggy/{{$member_id}}/{{$buggies_id}}/" >
+                        <form action="/buggy/" >
                             {{ csrf_field() }}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 63d03ee3513e3522b93ebf9ab88fd825c8f63890
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                             <button type="submit" class="btn btn-primary">確定</button>
                         </form>
                     </div>
+
+                    <script>
+
+                    </script>
+
+                    <form action="/buggy/checkout">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-primary">確定</button>
+                    </form>
                 </div>
             </div>
         </div>

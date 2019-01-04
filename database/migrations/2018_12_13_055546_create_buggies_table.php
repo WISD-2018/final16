@@ -16,7 +16,7 @@ class CreateBuggiesTable extends Migration
         Schema::create('buggies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('member_id');
-            $table->text('description');
+            $table->string('status');
             $table->timestamps();
         });
     }
