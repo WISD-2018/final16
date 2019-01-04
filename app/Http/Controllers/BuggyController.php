@@ -82,15 +82,25 @@ class BuggyController extends Controller
             $buggies_id=Buggies::where(['member_id'=>$member_id,'status'=>'已綁定'])->first();
             if(!empty($buggies_id)) {
 
-                //sales資料表 建檔
-                Sale::create(['member_id'=>$member_id]);
 
                 //sales_info資料表 建檔
-                $sale_id=Sale::all('id','member_id')->where('member_id',$member_id)->first();
-                Sales_info::create(['sales_id'=>$sale_id->id]);
+                $sale_id=Sale::all('id','member_id')->where('member_id',$member_id)->last();
+                $pro_id=Buggies_info::all()->where('sale_id',$sale_id->id);
+                foreach ($pro_id as $pro){
+                    Sales_info::create([
+                        'sales_id' => $sale_id->id,
+                        'product_id' => $pro->product_id,
+                        'amount' => $pro->amount
+                    ]);
+
+                }
+
+                //buggies_info 清除
+                $clear=Buggies_info::where('sale_id',$sale_id->id);
+                $clear->delete();
 
 
-                return true;
+                return $sale_id;
             }else{
                 return '<h1>請先綁定購物籃子</h1>';
             }
@@ -112,11 +122,14 @@ class BuggyController extends Controller
             $buggy->status='已綁定';
             $buggy->save();
 
+            //sales資料表 建檔
             Sale::create([
                 'member_id'=>$member_id,
                 'date'=>date('Y-m-d'),
                 'time'=>date('H:i:s'),
             ]);
+
+
             return redirect('/buggy');
         }
 
@@ -126,15 +139,17 @@ class BuggyController extends Controller
     }
 
     public function product_insert(Request $request){
-        $product=Buggies_info::where(['buggies_id'=>1,'product_id'=>$request->id])->get();
+        $sale_id=Sale::all('id','member_id')->where('member_id',$request->member_id)->last();
+        $product=Buggies_info::where(['buggies_id'=>1,'product_id'=>$request->id,'sale_id'=>$sale_id->id])->get();
         if(!$product->isEmpty()){
             $amount=$request->amount + $product[0]->amount;
             Buggies_info::where(['buggies_id'=>1,'product_id'=>$request->id])
                 ->update(['amount'=>$amount]);
             return redirect('/shopping');
         }else{
+
             $data=['buggies_id'=>1,'product_id'=>$request->id,'amount'=>$request->amount
-                ,'sale_id'=>1];
+                ,'sale_id'=>$sale_id->id];
             Buggies_info::create($data);
             return redirect('/shopping');
         }

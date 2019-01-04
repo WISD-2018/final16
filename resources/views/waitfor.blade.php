@@ -37,10 +37,7 @@
                     <div class="modal-footer">
                         <form action="/buggy/" >
                             {{ csrf_field() }}
-<<<<<<< HEAD
 
-=======
->>>>>>> 63d03ee3513e3522b93ebf9ab88fd825c8f63890
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                             <button type="submit" class="btn btn-primary">確定</button>
                         </form>
@@ -50,9 +47,10 @@
 
                     </script>
 
-                    <form action="/buggy/checkout">
+                    <form action="/buggy/checkout" method="POST">
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-primary">確定</button>
+                        {{--<input type="hidden" name="member_id" value="1">--}}
+                        <button type="submit" class="btn btn-primary">結帳</button>
                     </form>
                 </div>
             </div>

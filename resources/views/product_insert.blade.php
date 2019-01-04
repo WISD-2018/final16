@@ -6,6 +6,7 @@
         {{ csrf_field() }}
         <label>產品A:</label>
         <input type="hidden" name="id" value=1>
+        <input type="hidden" name="member_id" value=1>
         <input type=number name="amount">
         <button type="submit">新增</button>
     </form>
@@ -27,6 +28,7 @@
             {{ csrf_field() }}
             <label>產品B:</label>
             <input type="hidden" name="id" value=2>
+            <input type="hidden" name="member_id" value=1>
             <input type=number name="amount">
             <button type="submit">新增</button>
         </form>
@@ -48,6 +50,7 @@
             {{ csrf_field() }}
             <label>產品C:</label>
             <input type="hidden" name="id" value=3>
+            <input type="hidden" name="member_id" value=1>
             <input type=number name="amount">
             <button type="submit">新增</button>
         </form>
