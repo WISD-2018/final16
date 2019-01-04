@@ -9,4 +9,6 @@ class Sale extends Model
     //
 
     protected $table='sales';
+
+    protected $fillable=['member_id','date','time'];
 }

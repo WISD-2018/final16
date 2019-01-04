@@ -14,25 +14,23 @@
 
 
 Route::get('/', function () {
-    return view('layout.default');
+    return view('layout2.default',['title'=>'首頁']);
 });
 
 Route::get('v2',function (){
     return view('layout2.default',['title'=>'v2']);
 });
 
-Route::get('test',function (){
-   return view('test');
-});
 
 //
 Route::group(['prefix'=> 'buggy'],function (){
     Route::get('testC','BuggyController@test');
     Route::get('testS/{id}','BuggyController@test2');
-    Route::get('/admin/{member_id}/{buggies_id}','BuggyController@index');
-    Route::get('/{member_id}/{buggies_id}','BuggyController@show');
-    Route::post('/{member_id}/{buggies_id}/waitfor','BuggyController@waitfor');
+    Route::get('/admin/{buggies_id}','BuggyController@index');
+    Route::get('/','BuggyController@show');
+    Route::post('/waitfor','BuggyController@waitfor');
 //    checkout------------->
+    Route::post('checkout','BuggyController@checkout');
 
 });
 
@@ -41,18 +39,15 @@ Route::get('/feedback',function (){
 });
 
 
-
-
 Route::get('/emergency',function (){
    return view('emergency',['title'=>'緊急回報']);
 });
 
 Route::get('/member', 'MemberController@index');
 
-
 Route::get('/member/modify', 'MemberController@modify');
 
-Route::post('/member/modify', 'MemberController@test');
+Route::post('/member/modify', 'MemberController@update');
 
 Route::post('/member/upload/img','MemberController@upload_img');
 
@@ -64,11 +59,29 @@ Route::get('/qrcode/reader',function (){
     return view('qreader',['title'=>'綁定籃子']);
 });
 
-
-Route::get('qrcode/blending','BuggyController@blending');
-
-
-Route::get('/test','BuggyController@index');
+Route::get('qrcode/blending/{buggy_id}','BuggyController@blending');
 
 Route::post('result','BuggyController@result');
+
+
+Route::group(['middleware' => ['web']], function () {
+    //登入登出
+    Route::get('auth/login','MemberController@getLogin');
+    Route::post('auth/login','MemberController@postLogin');
+    Route::get('auth/logout','MemberController@getLogout');
+    Route::post('auth/logout','MemberController@postLogout');
+    //註冊
+    Route::get('auth/register','MemberController@getRegister');
+    Route::post('auth/register','MemberController@postRegister');
+
+});
+
+//測試功能
+Route::get('/shopping',function (){
+    return view('product_insert',['title'=>'新增購物商品']);
+});
+Route::post('/shopping','BuggyController@product_insert');
+Route::post('/shopping/destory','BuggyController@product_destory');
+Route::post('/shopping/update','BuggyController@product_update');
+Route::post('/shopping/checkout','BuggyController@product_checkout');
 
