@@ -22,15 +22,15 @@ Route::get('v2',function (){
 });
 
 
-//
+
 Route::group(['prefix'=> 'buggy'],function (){
     Route::get('testC','BuggyController@test');
     Route::get('testS/{id}','BuggyController@test2');
     Route::get('/admin/{buggies_id}','BuggyController@index');
     Route::get('/','BuggyController@show');
     Route::post('/waitfor','BuggyController@waitfor');
-//    checkout------------->
     Route::post('checkout','BuggyController@checkout');
+
 
 });
 
