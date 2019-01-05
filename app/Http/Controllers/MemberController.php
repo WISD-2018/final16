@@ -23,7 +23,7 @@ class MemberController extends Controller
         }
         $member=Member::find($id);
         $payments=Payment::all()->where('member_id',1);
-        $sales=Sale::where('member_id',1)->orderBy('date','desc')->get();
+        $sales=Sale::where('member_id',$id)->orderBy('date','desc')->get();
         $sales_info=new Sales_info();
         $products=new Products();
 
@@ -94,12 +94,16 @@ class MemberController extends Controller
         if(Auth::check()){
             return \redirect('/');
         }else{
-            return view('auth.login',['title'=>'使用者登入']);
+//            return view('auth.login',['title'=>'使用者登入']);
+            return view('frontend.Sign_in',['title'=>'使用者登入']);
         }
     }
 
     public function postLogin(Request $request)
     {
+        if ($request->code!=$request->vercode){
+            return '驗證碼錯誤請重新輸入';
+        }
         $member_data=array(
             'account'=>$request->get('account'),
             'password'=>$request->get('password')
@@ -108,7 +112,7 @@ class MemberController extends Controller
         if(Auth::attempt($member_data)){
             return \redirect('/member');
         }else{
-            return 'failed';
+            return '帳號或密碼錯誤請重新輸入';
         }
     }
 
@@ -126,7 +130,8 @@ class MemberController extends Controller
         if(Auth::check()){
             return \redirect('/');
         }else{
-            return view('auth.register',['title'=>'註冊']);
+            return view('frontend.Register',['title'=>'註冊']);
+//            return view('auth.register',['title'=>'註冊']);
         }
 
     }

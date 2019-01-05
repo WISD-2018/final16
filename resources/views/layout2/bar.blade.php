@@ -23,7 +23,7 @@
                 <a class="nav-link" href="/">首頁<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/product">商品資訊</a>
+                <a class="nav-link" href="/商品資訊_查詢">商品資訊查詢</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/product">特價資訊</a>
