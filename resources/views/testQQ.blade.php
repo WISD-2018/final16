@@ -13,7 +13,7 @@
             forceTLS: true
         });
 
-        var channel = pusher.subscribe('mychannel');
+        var channel = pusher.subscribe('mychannel{{$member_id}}');
         channel.bind('App\\Events\\ShoppingStatusUpdate', function(data) {
             alert(JSON.stringify(data));
         });

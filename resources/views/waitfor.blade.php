@@ -43,15 +43,24 @@
                         </form>
                     </div>
 
+                    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+                    <meta name="csrf-token" content="{{csrf_token()}}">
                     <script>
+                        // Enable pusher logging - don't include this in production
+                        Pusher.logToConsole = true;
+
+                        var pusher = new Pusher('72a503cd4d1e66357b14', {
+                            cluster: 'eu',
+                            forceTLS: true
+                        });
+
+                        var channel = pusher.subscribe('checkout{{$member_id}}');
+                        channel.bind('App\\Events\\ShoppingStatusUpdate', function(data) {
+                            alert(JSON.stringify(data)+'已經結帳完成，謝謝光臨~');
+
+                        });
 
                     </script>
-
-                    <form action="/buggy/checkout" method="POST">
-                        {{ csrf_field() }}
-                        {{--<input type="hidden" name="member_id" value="1">--}}
-                        <button type="submit" class="btn btn-primary">結帳</button>
-                    </form>
                 </div>
             </div>
         </div>

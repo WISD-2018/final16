@@ -20,11 +20,11 @@ class ShoppingStatusUpdate implements ShouldBroadcast
      *
      * @return void
      */
-    public $sale_id;
-    public function __construct($sale_id)
+    public $member_id;
+    public function __construct($member_id)
     {
         //
-        $this->sale_id = $sale_id;
+        $this->member_id=$member_id;
     }
 
     /**
@@ -34,9 +34,9 @@ class ShoppingStatusUpdate implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('mychannel');
+        return new Channel('mychannel'.$this->member_id);
     }
     public function  broadcastWith(){
-        return ['data'=>$this->sale_id];
+        return ['data'=>$this->member_id];
     }
 }

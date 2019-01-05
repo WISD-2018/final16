@@ -139,6 +139,7 @@ class BuggyController extends Controller
     }
 
     public function product_insert(Request $request){
+        broadcast(new ShoppingStatusUpdate($request->member_id));
         $sale_id=Sale::all('id','member_id')->where('member_id',$request->member_id)->last();
         $product=Buggies_info::where(['buggies_id'=>1,'product_id'=>$request->id,'sale_id'=>$sale_id->id])->get();
         if(!$product->isEmpty()){
@@ -156,35 +157,30 @@ class BuggyController extends Controller
     }
 
     public function product_destory(Request $request){
+        broadcast(new ShoppingStatusUpdate($request->member_id));
         $product=Buggies_info::where('product_id',$request->id)->delete();
         return redirect('/shopping');
     }
 
     public function product_update(Request $request){
+        broadcast(new ShoppingStatusUpdate($request->member_id));
         Buggies_info::where('product_id',$request->id)->update(['amount'=>$request->amount]);
         return redirect('/shopping');
     }
 
-    public function product_checkout(){
-
+    public function product_checkout(Request $request){
        //模擬自動結帳機，已經結帳完成‧
+        broadcast(new ShoppingStatusUpdate($request->member_id));
         return redirect('/shopping');
     }
 
 
     public function test(){
-        return view('testQQ');
-
+        $member_id=1;
+        return view('testQQ',['member_id'=>$member_id]);
     }
     public function test2($id)
     {
         broadcast(new ShoppingStatusUpdate($id));
-    }
-
-    public function update($sale_id){
-        $info=Buggies_info::all()->where('sale_id',$sale_id);
-        event(new ShoppingStatusUpdate($info));
-
-
     }
 }

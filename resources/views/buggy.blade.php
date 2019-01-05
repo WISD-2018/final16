@@ -118,6 +118,24 @@
             });
         }
     </script>
+    <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+    <meta name="csrf-token" content="{{csrf_token()}}">
+    <script>
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('72a503cd4d1e66357b14', {
+            cluster: 'eu',
+            forceTLS: true
+        });
+
+        var channel = pusher.subscribe('mychannel{{$member_id}}');
+        channel.bind('App\\Events\\ShoppingStatusUpdate', function(data) {
+            alert(JSON.stringify(data)+'已更新~');
+            ajaxget();
+        });
+
+    </script>
 
     <body onload="ajaxget()">
 
@@ -128,39 +146,6 @@
         </tr>
         </thead>
         <tbody id="tbody_result">
-
-        {{--<tr>--}}
-            {{--<td>--}}
-                {{--<div class="container">--}}
-                    {{--<div class="row">--}}
-                        {{--<div class="col-4">--}}
-                            {{--<a href="https://www.obdesign.com.tw/product.aspx?seriesID=DA6205-"--}}
-                               {{--target="_blank">--}}
-                                {{--<img class="img-fluid" src="https://image.obdesign.com.tw/catalog/170801xxx/DA6205-L.jpg">--}}
-                            {{--</a>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-8">--}}
-                            {{--<table class="table-borderless">--}}
-                                {{--<tr align="left" valign="center">--}}
-                                    {{--<td>--}}
-                                        {{--<p style="color:#666;font-size:18pt;text-decoration:none;border: 0px" >--}}
-                                            {{--aaaaaaaaaaaaa</p>--}}
-                                        {{--<input style="font-weight:bold;" type="text" disabled="disabled";  value="單價"/>--}}
-                                        {{--<input style="font-weight:bold;" type="text" disabled="disabled";  value="數量"/>--}}
-                                        {{--<input style="font-weight:bold;" type="text" disabled="disabled";  value="小計"/><br>--}}
-                                        {{--<input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>--}}
-                                        {{--<input style="color: #1b4b72" type="text" disabled="disabled";  value="1"/>--}}
-                                        {{--<input style="color: #1b4b72" type="text" disabled="disabled";  value="8788"/>--}}
-                                    {{--</td>--}}
-                                {{--</tr>--}}
-                            {{--</table>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</td>--}}
-        {{--</tr>--}}
-
-
         </tbody>
     </table>
 
