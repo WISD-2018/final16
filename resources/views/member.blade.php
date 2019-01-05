@@ -105,7 +105,14 @@
                                                     <tr class="table-active">
                                                         <th scope="col">{{ $name=$products->where('id',$sale_info->product_id)->first()->name }}</th>
                                                         <th scope="col">{{ $price=$products->where('id',$sale_info->product_id)->first()->price }}</th>
-                                                        <th scope="col">{{ $discount=$products->where('id',$sale_info->product_id)->first()->discount }}</th>
+                                                        <th scope="col">
+                                                            @php
+                                                                $discount=$products->where('id',$sale_info->product_id)->first()->discount;
+                                                                if ($discount!=0){
+                                                                echo ((1-$discount)*10).'折';
+                                                                }
+                                                             @endphp
+                                                        </th>
                                                         <th scope="col">{{ $amount=$sale_info->amount }}</th>
                                                         <th scope="col">{{ $t=$price*(1-$discount)*$amount}}
                                                         </th>
