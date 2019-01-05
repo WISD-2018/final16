@@ -131,7 +131,8 @@
 
         var channel = pusher.subscribe('mychannel{{$member_id}}');
         channel.bind('App\\Events\\ShoppingStatusUpdate', function(data) {
-            alert(JSON.stringify(data)+'已更新~');
+            // JSON.stringify(data)+
+            alert('購物籃已更新~');
             ajaxget();
         });
 

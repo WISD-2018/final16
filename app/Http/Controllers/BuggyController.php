@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Buggies;
 use App\Buggies_info;
+use App\Events\CheckOut;
 use App\Events\ShoppingStatusUpdate;
 use App\Products;
 use App\Products_info;
@@ -100,7 +101,7 @@ class BuggyController extends Controller
                 $clear->delete();
 
 
-                return $sale_id;
+                return redirect('/member');
             }else{
                 return '<h1>請先綁定購物籃子</h1>';
             }
@@ -170,7 +171,7 @@ class BuggyController extends Controller
 
     public function product_checkout(Request $request){
        //模擬自動結帳機，已經結帳完成‧
-        broadcast(new ShoppingStatusUpdate($request->member_id));
+        broadcast(new CheckOut($request->member_id));
         return redirect('/shopping');
     }
 

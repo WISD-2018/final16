@@ -51,9 +51,10 @@
                         });
 
                         var channel = pusher.subscribe('checkout{{$member_id}}');
-                        channel.bind('App\\Events\\ShoppingStatusUpdate', function(data) {
-                            alert(JSON.stringify(data)+'已經結帳完成，謝謝光臨~');
-
+                        channel.bind('App\\Events\\CheckOut', function(data) {
+                            // JSON.stringify(data)+
+                            alert('已經結帳完成，謝謝光臨~');
+                            document.location.href="/buggy/checkout";
                         });
 
                     </script>

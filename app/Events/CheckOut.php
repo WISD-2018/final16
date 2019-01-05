@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\Buggies_info;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Queue\SerializesModels;
@@ -12,7 +11,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class ShoppingStatusUpdate implements ShouldBroadcastNow
+class CheckOut implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -35,9 +34,6 @@ class ShoppingStatusUpdate implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('mychannel'.$this->member_id);
-    }
-    public function  broadcastWith(){
-        return ['data'=>$this->member_id];
+        return new Channel('checkout'.$this->member_id);
     }
 }
