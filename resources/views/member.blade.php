@@ -112,8 +112,6 @@
                                                                 echo ((1-$discount)*10).'折';
                                                                 }
                                                              @endphp
-
-
                                                         </th>
                                                         <th scope="col">{{ $amount=$sale_info->amount }}</th>
                                                         <th scope="col">{{ $t=$price*(1-$discount)*$amount}}
