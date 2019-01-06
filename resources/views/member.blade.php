@@ -83,7 +83,7 @@
                                         <div class="card-header" id="heading{{ $sale->id }}">
                                             <h5 class="mb-0">
                                                 <button class="btn btn-link" data-toggle="collapse" data-target="#{{ $sale->id }}" aria-expanded="true" aria-controls="{{ $sale->id }}">
-                                                    {{ $sale->date }}
+                                                    {{ $sale->date.' '.$sale->time }}
                                                 </button>
                                             </h5>
                                         </div>
