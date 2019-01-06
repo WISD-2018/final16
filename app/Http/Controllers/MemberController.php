@@ -118,6 +118,8 @@ class MemberController extends Controller
 
     public function postLogout(Request $request)
     {
+        $buggy=new BuggyController;
+        $buggy->unblending();
         Auth::guard()->logout();
 
         $request->session()->invalidate();

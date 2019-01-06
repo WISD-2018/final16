@@ -60,6 +60,7 @@ Route::get('/qrcode/reader',function (){
 });
 
 Route::get('qrcode/blending/{buggy_id}','BuggyController@blending');
+Route::get('qrcode/unblending','BuggyController@unblending');
 
 Route::post('result','BuggyController@result');
 

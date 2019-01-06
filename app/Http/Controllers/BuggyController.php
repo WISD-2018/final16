@@ -77,6 +77,11 @@ class BuggyController extends Controller
         public function checkout(){
             if(Auth::check()){
                 $member_id=Auth::id();
+                Sale::create([
+                    'member_id'=>$member_id,
+                    'date'=>date('Y-m-d'),
+                    'time'=>date('H:i:s'),
+                ]);
             }else{
                 return \redirect('/auth/login');
             }
@@ -86,7 +91,7 @@ class BuggyController extends Controller
 
                 //sales_info資料表 建檔
                 $sale_id=Sale::all('id','member_id')->where('member_id',$member_id)->last();
-                $pro_id=Buggies_info::all()->where('sale_id',$sale_id->id);
+                $pro_id=Buggies_info::all()->where('buggies_id',$buggies_id->id);
                 foreach ($pro_id as $pro){
                     Sales_info::create([
                         'sales_id' => $sale_id->id,
@@ -97,8 +102,11 @@ class BuggyController extends Controller
                 }
 
                 //buggies_info 清除
-                $clear=Buggies_info::where('sale_id',$sale_id->id);
-                $clear->delete();
+//                $clear=Buggies_info::where('sale_id',$sale_id->id);
+//                $clear->delete();
+
+                //unblending buggy
+                $this->unblending();
 
 
                 return redirect('/member');
@@ -123,26 +131,36 @@ class BuggyController extends Controller
             $buggy->status='已綁定';
             $buggy->save();
 
-            //sales資料表 建檔
-            Sale::create([
-                'member_id'=>$member_id,
-                'date'=>date('Y-m-d'),
-                'time'=>date('H:i:s'),
-            ]);
+//            //sales資料表 建檔
+//            Sale::create([
+//                'member_id'=>$member_id,
+//                'date'=>date('Y-m-d'),
+//                'time'=>date('H:i:s'),
+//            ]);
 
 
             return redirect('/buggy');
         }
+    }
 
-
-
+    public function unblending(){
+        if(Auth::check()){
+            $member_id=Auth::id();
+        }else{
+            return redirect('/');
+        }
+        $buggies=Buggies::where(['member_id'=>$member_id,'status'=>'已綁定'])->first();
+        $buggies_info=Buggies_info::where('buggies_id',$buggies->id)->delete();
+        $buggies->member_id=0;
+        $buggies->status='';
+        $buggies->save();
 
     }
 
     public function product_insert(Request $request){
         broadcast(new ShoppingStatusUpdate($request->member_id));
-        $sale_id=Sale::all('id','member_id')->where('member_id',$request->member_id)->last();
-        $product=Buggies_info::where(['buggies_id'=>1,'product_id'=>$request->id,'sale_id'=>$sale_id->id])->get();
+//        $sale_id=Sale::all('id','member_id')->where('member_id',$request->member_id)->last();
+        $product=Buggies_info::where(['buggies_id'=>1,'product_id'=>$request->id])->get();
         if(!$product->isEmpty()){
             $amount=$request->amount + $product[0]->amount;
             Buggies_info::where(['buggies_id'=>1,'product_id'=>$request->id])
@@ -151,7 +169,7 @@ class BuggyController extends Controller
         }else{
 
             $data=['buggies_id'=>1,'product_id'=>$request->id,'amount'=>$request->amount
-                ,'sale_id'=>$sale_id->id];
+                ,'sale_id'=>0];
             Buggies_info::create($data);
             return redirect('/shopping');
         }
