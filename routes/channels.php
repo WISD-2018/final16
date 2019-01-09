@@ -11,6 +11,7 @@
 |
 */
 use App\Buggies_info;
+use Illuminate\Support\Facades\Broadcast;
 
 Broadcast::channel('mychannel', function () {
     return true;

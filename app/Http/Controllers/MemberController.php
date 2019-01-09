@@ -23,7 +23,7 @@ class MemberController extends Controller
         }
         $member=Member::find($id);
         $payments=Payment::all()->where('member_id',1);
-        $sales=Sale::where('member_id',$id)->orderBy('date','desc')->get();
+        $sales=Sale::where('member_id',$id)->orderBy('date','desc')->orderBy('time','desc')->get();
         $sales_info=new Sales_info();
         $products=new Products();
 
@@ -118,6 +118,8 @@ class MemberController extends Controller
 
     public function postLogout(Request $request)
     {
+        $buggy=new BuggyController;
+        $buggy->unblending();
         Auth::guard()->logout();
 
         $request->session()->invalidate();
