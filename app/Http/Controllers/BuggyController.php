@@ -23,20 +23,15 @@ class BuggyController extends Controller
         // Validate the request...
         $buggy_list= Buggies_info::all('buggies_id','product_id','amount')->where('buggies_id',$buggies_id);
 
-        $id=Buggies_info::all('buggies_id','product_id')->where('buggies_id',$buggies_id);
+        $id=Buggies_info::all('buggies_id','product_id','created_at')->where('buggies_id',$buggies_id)->sortBy('created_at');
         $pro_id=[];
+        $aa = json_decode($buggy_list);
         for ($i=0 ; $i < count($id) ; $i++){
             array_push($pro_id,json_decode($id)[$i]->product_id);
+            $products=Products::all('id','name','price','img')->find(json_decode($id)[$i]->product_id);
+            array_push($aa,$products);
         }
 
-        $products=Products::all('id','name','price','img')->find($pro_id);
-
-
-        $aa = json_decode($buggy_list);
-
-        foreach ($products as $product){
-            array_push($aa,$product);
-        }
 
         return $aa;
     }
@@ -99,6 +94,9 @@ class BuggyController extends Controller
                 //buggies_info 清除
                 $clear=Buggies_info::where('sale_id',$sale_id->id);
                 $clear->delete();
+                
+                //buggies 結束綁定
+
 
 
                 return redirect('/member');

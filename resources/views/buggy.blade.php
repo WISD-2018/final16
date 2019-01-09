@@ -47,7 +47,7 @@
         {
             $.ajax({
                 type: 'get',
-                url: 'http://127.0.0.1:8000/buggy/admin/{{$buggies_id}}',
+                url: '{{ url('buggy/admin/'.$buggies_id) }}',
                 dataType: 'Json',
                 success: function (data) {
 
