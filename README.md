@@ -11,16 +11,28 @@
 
 * 系統復原步驟 (包括測試資料)
 
-* 系統使用帳號
-
+從github上clone回來
 ```
 git clone https://github.com/WISD-2018/final16
 ```
-
+切換到專案目錄
 ```
 cd final16
 ```
+還原composer 套件
+```
+composer install
+```
+還原npm套件
+```
+npm install
+```
+複製.env.example生成.env
+```
+cp .env.example .env
+```
 
+* 系統使用帳號
 * 系統開發人員
 
 1. [彭柏瑄](https://github.com/aa349276)
