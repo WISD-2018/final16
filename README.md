@@ -33,8 +33,25 @@ GET|HEAD      | qrcode/reader              |               | Closure            
 GET|HEAD      | qrcode/unblending          |               | App\Http\Controllers\BuggyController@unblending            | web          |
 ```
 4. 購物籃商品新增刪除修改
+```
+Method        | URI                        | Name          | Action                                                     | Middleware   |
+GET|HEAD      | buggy                      |               | App\Http\Controllers\BuggyController@show                  | web          |
+GET|HEAD      | buggy/admin/{buggies_id}   |               | App\Http\Controllers\BuggyController@index                 | web          |
+POST          | buggy/waitfor              |               | App\Http\Controllers\BuggyController@waitfor               | web          |
+```
 5. 購物籃頁面及時反饋
+
+```
+Method        | URI                        | Name          | Action                                                     | Middleware   |
+GET|POST|HEAD | broadcasting/auth          |               | Illuminate\Broadcasting\BroadcastController@authenticate   | web          |
+```
 6. 結帳作業
+
+```
+Method        | URI                        | Name          | Action                                                     | Middleware   |
+POST          | result                     |               | App\Http\Controllers\BuggyController@result                | web          |
+GET|HEAD      | buggy/checkout             |               | App\Http\Controllers\BuggyController@checkout              | web          |
+```
 
 * 初始專案與DB負責的同學 (若負責的同學超過一位，列出每一位同學負責的部分)
 
