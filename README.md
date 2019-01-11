@@ -31,6 +31,15 @@ npm install
 ```
 cp .env.example .env
 ```
+產生金鑰
+```
+artisan key:generate
+```
+測試
+```
+artisan serve
+```
+能成功看到主頁代表成功
 
 * 系統使用帳號
 * 系統開發人員
