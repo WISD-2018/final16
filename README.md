@@ -4,7 +4,7 @@
 * 系統的作用 
 
 * 系統的主要功能 (簡要列出每一功能、路由、及負責的同學)
-1. 登入、登出、註冊
+1. 登入、登出、註冊 ->負責人:[蘇詠臨](https://github.com/3A532035)
 ```
  Method        | URI                        | Name          | Action                                                     | Middleware   |
  GET|HEAD      | auth/login                 |               | App\Http\Controllers\MemberController@getLogin             | web          |
@@ -14,7 +14,7 @@
  POST          | auth/register              |               | App\Http\Controllers\MemberController@postRegister         | web          |
  GET|HEAD      | auth/register              |               | App\Http\Controllers\MemberController@getRegister          | web          |
 ```
-2. 會員資料顯示(會員基本資料、消費紀錄)、修改
+2. 會員資料顯示(會員基本資料、消費紀錄)、修改 ->負責人:[蘇詠臨](https://github.com/3A532035)
 
 ```
 Method        | URI                        | Name          | Action                                                     | Middleware   |
@@ -23,7 +23,7 @@ GET|HEAD      | member/modify              |               | App\Http\Controller
 POST          | member/modify              |               | App\Http\Controllers\MemberController@update               | web          |
 POST          | member/upload/img          |               | App\Http\Controllers\MemberController@upload_img           | web          |
 ```
-3. QRcode掃描綁定購物籃
+3. QRcode掃描綁定購物籃 ->負責人:[蘇詠臨](https://github.com/3A532035)
 
 ```
 Method        | URI                        | Name          | Action                                                     | Middleware   |
@@ -32,20 +32,20 @@ GET|HEAD      | qrcode/blending/{buggy_id} |               | App\Http\Controller
 GET|HEAD      | qrcode/reader              |               | Closure                                                    | web          |
 GET|HEAD      | qrcode/unblending          |               | App\Http\Controllers\BuggyController@unblending            | web          |
 ```
-4. 購物籃商品新增刪除修改
+4. 購物籃商品新增刪除修改 ->負責人:[彭柏瑄](https://github.com/aa349276)
 ```
 Method        | URI                        | Name          | Action                                                     | Middleware   |
 GET|HEAD      | buggy                      |               | App\Http\Controllers\BuggyController@show                  | web          |
 GET|HEAD      | buggy/admin/{buggies_id}   |               | App\Http\Controllers\BuggyController@index                 | web          |
 POST          | buggy/waitfor              |               | App\Http\Controllers\BuggyController@waitfor               | web          |
 ```
-5. 購物籃頁面及時反饋
+5. 購物籃頁面及時反饋 ->負責人:[彭柏瑄](https://github.com/aa349276)
 
 ```
 Method        | URI                        | Name          | Action                                                     | Middleware   |
 GET|POST|HEAD | broadcasting/auth          |               | Illuminate\Broadcasting\BroadcastController@authenticate   | web          |
 ```
-6. 結帳作業
+6. 結帳作業 ->負責人:[彭柏瑄](https://github.com/aa349276)
 
 ```
 Method        | URI                        | Name          | Action                                                     | Middleware   |
@@ -54,6 +54,7 @@ GET|HEAD      | buggy/checkout             |               | App\Http\Controller
 ```
 
 * 初始專案與DB負責的同學 (若負責的同學超過一位，列出每一位同學負責的部分)
+
 
 * 額外使用的套件或樣板 (簡要說明用途)
 
