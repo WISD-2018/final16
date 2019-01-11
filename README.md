@@ -9,14 +9,11 @@
 
 * 額外使用的套件或樣板 (簡要說明用途)
 
-1. "pusher/pusher-php-server": "~3.0"
+1. "pusher/pusher-php-server": "~3.0" :
 
+2. "simplesoftwareio/simple-qrcode": "~2" :產生儲存籃子綁定網址的Qrcode
 
-2. "simplesoftwareio/simple-qrcode": "~2"
-產生儲存籃子綁定網址的Qrcode
-
-3. "vue-qrcode-reader": "^1.3.3"
-Qrcode的掃瞄器
+3. "vue-qrcode-reader": "^1.3.3" :Qrcode的掃瞄器
 
 * 系統復原步驟 (包括測試資料)
 
