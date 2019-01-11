@@ -41,10 +41,7 @@
 |        | POST          | shopping/destory           |               | App\Http\Controllers\BuggyController@product_destory       | web          |
 |        | POST          | shopping/update            |               | App\Http\Controllers\BuggyController@product_update        | web          |
 |        | GET|HEAD      | v2                         |               | Closure                                                    | web          |
-|        | GET|HEAD      | 商品資訊                   | 商品資訊      | App\Http\Controllers\Product_infoController@product_info   | web          |
-|        | GET|HEAD      | 商品資訊/{id}              |               | App\Http\Controllers\Product_infoController@product_info   | web          |
-|        | GET|HEAD      | 商品資訊_查詢              | 商品資訊_查詢 | App\Http\Controllers\Product_infoController@index          | web          |
-|        | POST          | 商品資訊_查詢              |               | App\Http\Controllers\Product_infoController@product_Search | web          |
+
 +--------+---------------+----------------------------+---------------+------------------------------------------------------------+--------------+
 ```
 
