@@ -54,7 +54,8 @@ GET|HEAD      | buggy/checkout             |               | App\Http\Controller
 ```
 
 * 初始專案與DB負責的同學 (若負責的同學超過一位，列出每一位同學負責的部分)
-
+初始專案負責人:[蘇詠臨](https://github.com/3A532035)
+DB建置負責人:[彭柏瑄](https://github.com/aa349276)
 
 * 額外使用的套件或樣板 (簡要說明用途)
 
