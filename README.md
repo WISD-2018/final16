@@ -4,46 +4,20 @@
 * 系統的作用 
 
 * 系統的主要功能 (簡要列出每一功能、路由、及負責的同學)
-
+1. 登入、登出、註冊
 ```
-+--------+---------------+----------------------------+---------------+------------------------------------------------------------+--------------+
-| Domain | Method        | URI                        | Name          | Action                                                     | Middleware   |
-+--------+---------------+----------------------------+---------------+------------------------------------------------------------+--------------+
-|        | GET|HEAD      | /                          |               | Closure                                                    | web          |
-|        | GET|HEAD      | api/user                   |               | Closure                                                    | api,auth:api |
-|        | GET|HEAD      | auth/login                 |               | App\Http\Controllers\MemberController@getLogin             | web          |
+ Method        | URI                        | Name          | Action                                                     | Middleware
+  GET|HEAD      | auth/login                 |               | App\Http\Controllers\MemberController@getLogin             | web          |
 |        | POST          | auth/login                 |               | App\Http\Controllers\MemberController@postLogin            | web          |
 |        | GET|HEAD      | auth/logout                |               | App\Http\Controllers\MemberController@getLogout            | web          |
 |        | POST          | auth/logout                |               | App\Http\Controllers\MemberController@postLogout           | web          |
 |        | POST          | auth/register              |               | App\Http\Controllers\MemberController@postRegister         | web          |
 |        | GET|HEAD      | auth/register              |               | App\Http\Controllers\MemberController@getRegister          | web          |
-|        | GET|POST|HEAD | broadcasting/auth          |               | Illuminate\Broadcasting\BroadcastController@authenticate   | web          |
-|        | GET|HEAD      | buggy                      |               | App\Http\Controllers\BuggyController@show                  | web          |
-|        | GET|HEAD      | buggy/admin/{buggies_id}   |               | App\Http\Controllers\BuggyController@index                 | web          |
-|        | GET|HEAD      | buggy/checkout             |               | App\Http\Controllers\BuggyController@checkout              | web          |
-|        | GET|HEAD      | buggy/testC                |               | App\Http\Controllers\BuggyController@test                  | web          |
-|        | GET|HEAD      | buggy/testS/{id}           |               | App\Http\Controllers\BuggyController@test2                 | web          |
-|        | POST          | buggy/waitfor              |               | App\Http\Controllers\BuggyController@waitfor               | web          |
-|        | GET|HEAD      | emergency                  |               | Closure                                                    | web          |
-|        | GET|HEAD      | feedback                   |               | Closure                                                    | web          |
-|        | GET|HEAD      | member                     |               | App\Http\Controllers\MemberController@index                | web          |
-|        | GET|HEAD      | member/modify              |               | App\Http\Controllers\MemberController@modify               | web          |
-|        | POST          | member/modify              |               | App\Http\Controllers\MemberController@update               | web          |
-|        | POST          | member/upload/img          |               | App\Http\Controllers\MemberController@upload_img           | web          |
-|        | GET|HEAD      | qrcode                     |               | Closure                                                    | web          |
-|        | GET|HEAD      | qrcode/blending/{buggy_id} |               | App\Http\Controllers\BuggyController@blending              | web          |
-|        | GET|HEAD      | qrcode/reader              |               | Closure                                                    | web          |
-|        | GET|HEAD      | qrcode/unblending          |               | App\Http\Controllers\BuggyController@unblending            | web          |
-|        | POST          | result                     |               | App\Http\Controllers\BuggyController@result                | web          |
-|        | GET|HEAD      | shopping                   |               | Closure                                                    | web          |
-|        | POST          | shopping                   |               | App\Http\Controllers\BuggyController@product_insert        | web          |
-|        | POST          | shopping/checkout          |               | App\Http\Controllers\BuggyController@product_checkout      | web          |
-|        | POST          | shopping/destory           |               | App\Http\Controllers\BuggyController@product_destory       | web          |
-|        | POST          | shopping/update            |               | App\Http\Controllers\BuggyController@product_update        | web          |
-|        | GET|HEAD      | v2                         |               | Closure                                                    | web          |
-
-+--------+---------------+----------------------------+---------------+------------------------------------------------------------+--------------+
 ```
+2. 會員資料顯示(會員基本資料、消費紀錄)、修改
+3. QRcode掃描綁定購物籃
+4. 購物籃商品新增刪除修改
+5. 結帳作業
 
 * 初始專案與DB負責的同學 (若負責的同學超過一位，列出每一位同學負責的部分)
 
