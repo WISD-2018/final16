@@ -17,8 +17,12 @@
 git clone https://github.com/WISD-2018/final16
 ```
 
+```
+cd final16
+```
+
 * 系統開發人員
 
-** [彭柏瑄](https://github.com/aa349276)
+1. [彭柏瑄](https://github.com/aa349276)
 
-** [蘇詠臨](https://github.com/3A532035)
+2. [蘇詠臨](https://github.com/3A532035)
