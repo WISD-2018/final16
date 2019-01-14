@@ -1,10 +1,16 @@
 # final16
 * 系統部分畫面
-** 會員資訊
+
+## 會員資訊
+
 ![member](https://i.imgur.com/FnGE7w8.jpg)
-** 掃描購物籃之Qrcode 功能
+
+## 掃描購物籃之Qrcode 功能
+
 ![qrcode](https://i.imgur.com/qUIRFb1.jpg)
-** 購物籃功能
+
+## 購物籃功能
+
 ![buggy](https://i.imgur.com/LrAT5Vh.jpg)
 
 * 系統的作用 
