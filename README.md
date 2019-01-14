@@ -106,6 +106,7 @@ npm install
 複製.env.example生成.env
 ```
 cp .env.example .env
+//(ps. Pusher 功能，需自行到 https://pusher.com/ ，註冊帳號並且創立一個專案，之後將相關設定 [如:API Key] 輸入到 .env檔)
 ```
 產生金鑰
 ```
@@ -114,6 +115,7 @@ artisan key:generate
 測試
 ```
 artisan serve
+//(ps. 建議使用 artisan serve 進行測試，並且將 Uwamp 之 Apache port number 設為除8000之外的值，以避免內部發生問題)
 ```
 能成功看到主頁代表成功
 
