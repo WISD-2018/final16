@@ -1,8 +1,8 @@
 # final16
 * 系統主畫面
-![member](https://i.imgur.com/FnGE7w8)
+![member](https://i.imgur.com/FnGE7w8.jpg)
 ![qrcode](https://i.imgur.com/qUIRFb1.jpg)
-![buggy](https://i.imgur.com/LrAT5Vh)
+![buggy](https://i.imgur.com/LrAT5Vh.jpg)
 
 * 系統的作用 
 
