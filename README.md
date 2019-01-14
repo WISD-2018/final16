@@ -79,7 +79,7 @@ GET|HEAD      | buggy/checkout             |               | App\Http\Controller
 
 * 額外使用的套件或樣板 (簡要說明用途)
 
-1. "pusher/pusher-php-server": "~3.0" :
+1. "pusher/pusher-php-server": "~3.0" :由 Pusher.com 提供的套件，利用WebSocket讓Client端與Server端可以即時雙向雙工的溝通。
 
 2. "simplesoftwareio/simple-qrcode": "~2" :composer的套件，產生儲存籃子綁定網址的Qrcode
 
