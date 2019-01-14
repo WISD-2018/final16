@@ -1,5 +1,8 @@
 # final16
-* 系統主畫面 (可用一張至數張系統代表性畫面，系統畫面建議存放在其他網站，例如，https://imgur.com)
+* 系統主畫面
+![member](https://imgur.com/FnGE7w8)
+![qrcode](https://imgur.com/qUIRFb1)
+![buggy](https://imgur.com/LrAT5Vh)
 
 * 系統的作用 
 
