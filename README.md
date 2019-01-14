@@ -118,6 +118,7 @@ artisan serve
 //(ps. 建議使用 artisan serve 進行測試，並且將 Uwamp 之 Apache port number 設為除8000之外的值，以避免內部發生問題)
 ```
 其他環境設置問題，請參考 **測試用環境檔**
+
 能成功看到主頁代表成功
 
 * 系統使用帳號
